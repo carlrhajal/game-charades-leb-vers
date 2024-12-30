@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -252,10 +253,10 @@
     function updateScore(points) {
       if (currentTeam === 1) {
         team1Score += points;
-        document.getElementById('team1-score').textContent = Score: ${team1Score};
+        document.getElementById('team1-score').textContent = `Score: ${team1Score}`;
       } else if (currentTeam === 2) {
         team2Score += points;
-        document.getElementById('team2-score').textContent = Score: ${team2Score};
+        document.getElementById('team2-score').textContent = `Score: ${team2Score}`;
       }
     }
 
@@ -263,7 +264,7 @@
       timeLeft = TIMER_DURATION;
       passesLeft = MAX_PASSES;
       updatePassesLeft();
-      document.getElementById('timer').textContent = Time: ${timeLeft};
+      document.getElementById('timer').textContent = `Time: ${timeLeft}`;
       document.getElementById('start-btn').disabled = true;
       document.getElementById('stop-btn').disabled = false;
       document.getElementById('success-btn').disabled = false;
@@ -271,7 +272,7 @@
 
       timer = setInterval(() => {
         timeLeft--;
-        document.getElementById('timer').textContent = Time: ${timeLeft};
+        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
         if (timeLeft <= 0) {
           clearInterval(timer);
           playBuzzer();
@@ -298,7 +299,7 @@
     }
 
     function updatePassesLeft() {
-      document.getElementById('passes-left').textContent = Passes Left: ${passesLeft};
+      document.getElementById('passes-left').textContent = `Passes Left: ${passesLeft}`;
     }
 
     document.getElementById('team1-score-box').addEventListener('click', () => {
