@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,8 +75,15 @@
       margin-bottom: 10px;
     }
 
-    .proverb-en {
+    .proverb-ph {
       font-size: 1.4rem;
+      color: #870000;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .proverb-en {
+      font-size: 1.2rem;
       color: #333;
       text-align: center;
       margin-bottom: 10px;
@@ -181,6 +187,7 @@
   <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
+    <p class="proverb-ph" id="proverb_ph"></p>
     <p class="proverb-en" id="proverb_en"></p>
     <div class="points-container" id="points"></div>
   </div>
@@ -212,12 +219,6 @@
     const MAX_PASSES = 3; // Maximum passes per turn
 
     let currentIndex = 0;
-    let team1Score = 0;
-    let team2Score = 0;
-    let currentTeam = null;
-    let timer;
-    let timeLeft = TIMER_DURATION;
-    let passesLeft = MAX_PASSES;
     let proverbs = [];
 
     async function fetchData() {
@@ -229,135 +230,22 @@
     function displayProverb() {
       if (currentIndex >= 0 && currentIndex < proverbs.length) {
         const proverb = proverbs[currentIndex];
-        document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
-        document.getElementById('proverb_en').textContent = proverb.proverb_en;
+        document.getElementById('proverb_ar').textContent = proverb.proverb_ar || "—";
+        document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
+        document.getElementById('proverb_en').textContent = proverb.proverb_en || "—";
 
-        // Display points as tarbouches
+        // Display tarbouches for points
         const pointsContainer = document.getElementById('points');
-        pointsContainer.innerHTML = ''; // Clear previous tarbouches
-
-        for (let i = 0; i < proverb.points; i++) {
+        pointsContainer.innerHTML = ''; // Clear previous points
+        for (let i = 0; i < (proverb.points || 0); i++) {
           const tarbouch = document.createElement('img');
-          tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
+          tarbouch.src = './tarbouch.png';
           tarbouch.alt = 'Tarbouch Icon';
           tarbouch.className = 'tarbouch';
           pointsContainer.appendChild(tarbouch);
         }
-      } else {
-        document.getElementById('proverb_ar').textContent = "No more proverbs!";
-        document.getElementById('proverb_en').textContent = "";
-        document.getElementById('points').innerHTML = ""; // Clear points container
       }
     }
-
-    function updateScore(points) {
-      if (currentTeam === 1) {
-        team1Score += points;
-        document.getElementById('team1-score').textContent = `Score: ${team1Score}`;
-      } else if (currentTeam === 2) {
-        team2Score += points;
-        document.getElementById('team2-score').textContent = `Score: ${team2Score}`;
-      }
-    }
-
-    function startTimer() {
-      timeLeft = TIMER_DURATION;
-      passesLeft = MAX_PASSES;
-      updatePassesLeft();
-      document.getElementById('timer').textContent = `Time: ${timeLeft}`;
-      document.getElementById('start-btn').disabled = true;
-      document.getElementById('stop-btn').disabled = false;
-      document.getElementById('success-btn').disabled = false;
-      document.getElementById('pass-btn').disabled = false;
-
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          playBuzzer();
-          endTurn();
-        }
-      }, 1000);
-    }
-
-    function stopTimer() {
-      clearInterval(timer);
-      endTurn();
-    }
-
-    function playBuzzer() {
-      const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
-      audio.play();
-    }
-
-    function endTurn() {
-      document.getElementById('start-btn').disabled = false;
-      document.getElementById('stop-btn').disabled = true;
-      document.getElementById('success-btn').disabled = true;
-      document.getElementById('pass-btn').disabled = true;
-    }
-
-    function updatePassesLeft() {
-      document.getElementById('passes-left').textContent = `Passes Left: ${passesLeft}`;
-    }
-
-    document.getElementById('team1-score-box').addEventListener('click', () => {
-      currentTeam = 1;
-      document.getElementById('team1-score-box').classList.add('selected');
-      document.getElementById('team2-score-box').classList.remove('selected');
-    });
-
-    document.getElementById('team2-score-box').addEventListener('click', () => {
-      currentTeam = 2;
-      document.getElementById('team2-score-box').classList.add('selected');
-      document.getElementById('team1-score-box').classList.remove('selected');
-    });
-
-    document.getElementById('start-btn').addEventListener('click', () => {
-      if (currentTeam) {
-        startTimer();
-      } else {
-        alert('Please select a team first!');
-      }
-    });
-
-    document.getElementById('stop-btn').addEventListener('click', stopTimer);
-
-    document.getElementById('success-btn').addEventListener('click', () => {
-      if (currentIndex < proverbs.length) {
-        updateScore(proverbs[currentIndex].points);
-        currentIndex++;
-        displayProverb();
-      }
-    });
-
-    document.getElementById('pass-btn').addEventListener('click', () => {
-      if (passesLeft > 0) {
-        passesLeft--;
-        updatePassesLeft();
-        if (currentIndex < proverbs.length) {
-          currentIndex++;
-          displayProverb();
-        }
-      } else {
-        alert('No more passes left!');
-      }
-    });
-
-    document.getElementById('back-btn').addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        displayProverb();
-      }
-    });
-
-    document.getElementById('next-btn').addEventListener('click', () => {
-      if (currentIndex < proverbs.length - 1) {
-        currentIndex++;
-        displayProverb();
-      }
-    });
 
     fetchData();
   </script>
