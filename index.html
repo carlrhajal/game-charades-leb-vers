@@ -172,6 +172,12 @@
   </style>
 </head>
 <body>
+  <!-- Timer Duration Input -->
+  <div class="timer-duration-container">
+    <label for="timer-duration">Set Timer Duration (seconds): </label>
+    <input type="number" id="timer-duration" value="30" min="10" />
+  </div>
+
   <!-- Team Scores -->
   <div class="scores-container">
     <div class="score-box" id="team1-score-box">
@@ -215,7 +221,8 @@
   </div>
 
   <script>
-    const TIMER_DURATION = 30; // Adjustable timer duration
+    let TIMER_DURATION = 30; // Adjustable timer duration
+    
     const MAX_PASSES = 3; // Maximum passes per turn
 
     let currentIndex = 0;
@@ -270,6 +277,8 @@
     }
 
     function startTimer() {
+      const timerInput = document.getElementById('timer-duration');
+      TIMER_DURATION = parseInt(timerInput.value) || 30; // Update TIMER_DURATION based on input
       timeLeft = TIMER_DURATION;
       passesLeft = MAX_PASSES;
       updatePassesLeft();
