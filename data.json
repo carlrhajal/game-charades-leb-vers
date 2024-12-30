@@ -167,7 +167,7 @@
       "proverb_ar": "قطايف",
       "proverb_ph": "atayef",
       "category": "food",
-      "points": 1
+      "points": 2
   },
   {
       "proverb_en": "Baklawa",
@@ -188,7 +188,7 @@
       "proverb_ar": "فول مدمس",
       "proverb_ph": "foul medammes",
       "category": "food",
-      "points": 1
+      "points": 2
   },
   {
       "proverb_en": "Hummus",
@@ -212,18 +212,342 @@
       "points": 1
   },
   {
-      "proverb_en": "Arayes",
-      "proverb_ar": "عرائس",
-      "proverb_ph": "arayes",
-      "category": "food",
-      "points": 1
-  },
-  {
       "proverb_en": "Shanklish",
       "proverb_ar": "شنكليش",
       "proverb_ph": "shanklish",
       "category": "food",
       "points": 1
-  }
+  },
+  {
+    "proverb_en": "Li Beirut",
+    "proverb_ar": "لبيروت",
+    "proverb_ph": "Li Beirut",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Ana La Habibi",
+    "proverb_ar": "أنا لحبيبي",
+    "proverb_ph": "Ana La Habibi",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Waynak Ya Jar",
+    "proverb_ar": "وينك يا جار",
+    "proverb_ph": "Waynak Ya Jar",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Habibi Ya Nour El 3ayn",
+    "proverb_ar": "حبيبي يا نور العين",
+    "proverb_ph": "Habibi Ya Nour El 3ayn",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Talj Talj",
+    "proverb_ar": "تلج تلج",
+    "proverb_ph": "Talj Talj",
+    "points": 1,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Nassam 3alayna l hawa",
+    "proverb_ar": "نسّم علينا الهوى",
+    "proverb_ph": "Nassam 3alayna l hawa",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Sidi Mansour",
+    "proverb_ar": "سيدي منصور",
+    "proverb_ph": "Sidi Mansour",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Daret El Ayam",
+    "proverb_ar": "دارت الأيام",
+    "proverb_ph": "Daret El Ayam",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Ya Rait",
+    "proverb_ar": "يا ريت",
+    "proverb_ph": "Ya Rait",
+    "points": 1,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Layali Lubnan",
+    "proverb_ar": "ليالي لبنان",
+    "proverb_ph": "Layali Lubnan",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Ala Dal3ouna",
+    "proverb_ar": "على دلعونا",
+    "proverb_ph": "Ala Dal3ouna",
+    "points": 1,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Ghosn El Zaytoun",
+    "proverb_ar": "غصن الزيتون",
+    "proverb_ph": "Ghosn El Zaytoun",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Rouh W Na7ke",
+    "proverb_ar": "روح ونحكي",
+    "proverb_ph": "Rouh W Na7ke",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Taal Ya Gharam",
+    "proverb_ar": "تعال يا غرام",
+    "proverb_ph": "Taal Ya Gharam",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Le3bet Ya Zghayr",
+    "proverb_ar": "لعبت يا صغير",
+    "proverb_ph": "Le3bet Ya Zghayr",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Dakhlak Ya Eyyoun",
+    "proverb_ar": "دخلك يا عيون",
+    "proverb_ph": "Dakhlak Ya Eyyoun",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "La Tloumouni",
+    "proverb_ar": "لا تلوموني",
+    "proverb_ph": "La Tloumouni",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Tawal El Layl",
+    "proverb_ar": "طوال الليل",
+    "proverb_ph": "Tawal El Layl",
+    "points": 2,
+    "category": "song"
+  },
+  {
+    "proverb_en": "Njoom El Samaa",
+    "proverb_ar": "نجوم السما",
+    "proverb_ph": "Njoom El Samaa",
+    "points": 3,
+    "category": "song"
+  },
+  {
+    "proverb_en": "2ofoukh bel laban byotla3lak bawalin",
+    "proverb_ar": "أفوخ باللبن بيطلعلك باوالين",
+    "proverb_ph": "2ofoukh bel laban byotla3lak bawalin",
+    "points": 2
+  },
+  {
+    "proverb_en": "Kel deek 3a mazbelto siyah",
+    "proverb_ar": "كل ديك على مزبلته صياح",
+    "proverb_ph": "Kel deek 3a mazbelto siyah",
+    "points": 1
+  },
+  {
+      "proverb_en": "Li bayto men 2zez ma byermi l nas bel hjara",
+      "proverb_ar": "لي بيته من قزاز ما بيرمي الناس بالحجارة",
+      "proverb_ph": "Li bayto men 2zez ma byermi l nas bel hjara",
+      "points": 2
+  },
+  {
+      "proverb_en": "Iza kan l kalam men fiDa, fal sekout men zahab",
+      "proverb_ar": "إذا كان الكلام من فضة فالسكوت من ذهب",
+      "proverb_ph": "Iza kan l kalam men fiDa, fal sekout men zahab",
+      "points": 3
+  },
+  {
+      "proverb_en": "El sadi2 waqt el deyi2",
+      "proverb_ar": "الصديق وقت الضيق",
+      "proverb_ph": "El sadi2 waqt el deyi2",
+      "points": 1
+  },
+  {
+      "proverb_en": "Kel memnou3 marghoub",
+      "proverb_ar": "كل ممنوع مرغوب",
+      "proverb_ph": "Kel memnou3 marghoub",
+      "points": 2
+  },
+  {
+      "proverb_en": "L 7ajeh om el ekhtira3",
+      "proverb_ar": "الحاجة أم الاختراع",
+      "proverb_ph": "L 7ajeh om el ekhtira3",
+      "points": 2
+  },
+  {
+      "proverb_en": "7abl el kezeb 2asir",
+      "proverb_ar": "حبل الكذب قصير",
+      "proverb_ph": "7abl el kezeb 2asir",
+      "points": 2
+  },
+  {
+      "proverb_en": "Tanjra w le2it ghataha",
+      "proverb_ar": "طنجرة و لقيت غطاها",
+      "proverb_ph": "Tanjra w le2it ghataha",
+      "points": 1
+  },
+  {
+      "proverb_en": "El erd bi 3ein emmo ghazel",
+      "proverb_ar": "القرد بعين امه غزال",
+      "proverb_ph": "El erd bi 3ein emmo ghazel",
+      "points": 1
+  },
+  {
+      "proverb_en": "El tekrar bi 3allim l 7mar",
+      "proverb_ar": "التكرار بيعلم الحمار",
+      "proverb_ph": "El tekrar bi 3allim l 7mar",
+      "points": 2
+  },
+  {
+      "proverb_en": "Baselto ma7rou2a",
+      "proverb_ar": "بصلته محروقة",
+      "proverb_ph": "Baselto ma7rou2a",
+      "points": 1
+  },
+  {
+      "proverb_en": "Ensa el bansa",
+      "proverb_ar": "انسى البانسا",
+      "proverb_ph": "Ensa el bansa",
+      "points": 1
+  },
+  {
+      "proverb_en": "To2borny",
+      "proverb_ar": "تقبرني",
+      "proverb_ph": "To2borny",
+      "points": 1
+  },
+  {
+      "proverb_en": "Bayyid tanajer",
+      "proverb_ar": "بيض طناجر",
+      "proverb_ph": "Bayyid tanajer",
+      "points": 1
+  },
+  {
+      "proverb_en": "Ta2 7anak",
+      "proverb_ar": "طق حنك",
+      "proverb_ph": "Ta2 7anak",
+      "points": 2
+  },
+  {
+      "proverb_en": "Akalak rasak",
+      "proverb_ar": "اكلك راسك",
+      "proverb_ph": "Akalak rasak",
+      "points": 1
+  },
+  {
+      "proverb_en": "Ya 7mar",
+      "proverb_ar": "يا حمار",
+      "proverb_ph": "Ya 7mar",
+      "points": 1
+  },
+  {
+      "proverb_en": "Bchil",
+      "proverb_ar": "بشيل",
+      "proverb_ph": "Bchil",
+      "points": 3
+  },
+  {
+    "proverb_en": "Kell wa7ed bi bayto sultan",
+    "proverb_ar": "كل واحد ببيته سلطان",
+    "proverb_ph": "Kell wa7ed bi bayto sultan",
+    "points": 2,
+    "category": "proverb"
+},
+{
+    "proverb_en": "El akil zine",
+    "proverb_ar": "العقل زينة",
+    "proverb_ph": "Akil zine",
+    "points": 1,
+    "category": "proverb"
+},
+{
+    "proverb_en": "Di2 l may may",
+    "proverb_ar": "دق المي مي",
+    "proverb_ph": "Di2 l may may",
+    "points": 1,
+    "category": "proverb"
+},
+{
+    "proverb_en": "El dene doulab",
+    "proverb_ar": "الدني دولاب",
+    "proverb_ph": "El dene doulab",
+    "points": 2,
+    "category": "proverb"
+},
+{
+    "proverb_en": "Sabro tawil",
+    "proverb_ar": "صبره طويل",
+    "proverb_ph": "Sabro tawil",
+    "points": 1,
+    "category": "proverb"
+},
+{
+    "proverb_en": "Sabro asir",
+    "proverb_ar": "صبره قصير",
+    "proverb_ph": "Sabro asir",
+    "points": 1,
+    "category": "proverb"
+},
+{
+    "proverb_en": "Bta3mol mni7, btil2a mni7",
+    "proverb_ar": "بتعمل منيح، بتلقى منيح",
+    "proverb_ph": "Bta3mol mni7, btil2a mni7",
+    "points": 2,
+    "category": "proverb"
+},
+{
+    "proverb_en": "Foren l chebek",
+    "proverb_ar": "فرن الشبك",
+    "proverb_ph": "Foren l chebek",
+    "points": 1,
+    "category": "city"
+},
+{
+    "proverb_en": "3alay",
+    "proverb_ar": "عاليه",
+    "proverb_ph": "3alay",
+    "points": 1,
+    "category": "city"
+},
+{
+    "proverb_en": "Ya alla",
+    "proverb_ar": "يا الله",
+    "proverb_ph": "Ya alla",
+    "points": 1,
+    "category": "saying"
+},
+{
+    "proverb_en": "Wayetak",
+    "proverb_ar": "ويّتك",
+    "proverb_ph": "Wayetak",
+    "points": 1,
+    "category": "saying"
+},
+{
+    "proverb_en": "La hon w bas",
+    "proverb_ar": "لهون وبس",
+    "proverb_ph": "La hon w bas",
+    "points": 1,
+    "category": "saying"
+}
 
 ]
