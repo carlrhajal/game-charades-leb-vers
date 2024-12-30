@@ -416,6 +416,20 @@
       }
     });
 
+
+    document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      // Prevent the default action of the spacebar (scrolling the page)
+      event.preventDefault();
+
+      // Trigger the Success button if it's not disabled
+      const successButton = document.getElementById('success-btn');
+      if (!successButton.disabled) {
+        successButton.click();
+      }
+    }
+  });
+
     fetchData();
   </script>
 </body>
