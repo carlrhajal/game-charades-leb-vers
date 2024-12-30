@@ -38,6 +38,11 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
+    .score-box.selected {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #870000;
+    }
+
     .score-box input {
       border: none;
       background: transparent;
@@ -45,24 +50,6 @@
       font-size: 1.2rem;
       text-align: center;
       font-weight: bold;
-    }
-
-    .add-team-btn {
-      width: 30px;
-      height: 30px;
-      background-color: #870000;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .add-team-btn:hover {
-      background-color: #a30000;
     }
 
     .card-container {
@@ -95,13 +82,18 @@
       margin-bottom: 10px;
     }
 
-    .timer {
-      font-size: 1.5rem;
-      color: #870000;
-      margin: 10px 0;
+    .points-container {
+      margin-top: 10px;
     }
 
-    .buttons-container {
+    .tarbouch {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 2px;
+    }
+
+    .buttons-container, .team-container {
       display: flex;
       gap: 10px;
       margin-top: 20px;
@@ -127,12 +119,24 @@
     }
 
     .btn-pass {
-      background-color: black;
-      color: #fff;
+      background-color: #FFCC00;
+      color: #333;
     }
 
     .btn-pass:hover {
-      background-color: #555;
+      background-color: #FF9900;
+    }
+
+    .start-stop-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .timer {
+      font-size: 1.5rem;
+      color: #870000;
+      margin-top: 10px;
     }
 
     .navigation-arrows {
@@ -162,7 +166,7 @@
 </head>
 <body>
   <!-- Team Scores -->
-  <div class="scores-container" id="scores-container">
+  <div class="scores-container">
     <div class="score-box" id="team1-score-box">
       <input id="team1-name" value="Team 1" />
       <p id="team1-score">Score: 0</p>
@@ -171,23 +175,27 @@
       <input id="team2-name" value="Team 2" />
       <p id="team2-score">Score: 0</p>
     </div>
-    <button class="add-team-btn" id="add-team-btn">+</button>
   </div>
 
   <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
     <p class="proverb-en" id="proverb_en"></p>
+    <div class="points-container" id="points"></div>
   </div>
 
   <!-- Timer -->
-  <p class="timer">Time: <input type="number" id="timer" value="30" style="width: 50px;" /> seconds</p>
+  <p class="timer" id="timer">Time: 30</p>
   <p class="passes-left" id="passes-left">Passes Left: 3</p>
 
-  <!-- Start, Stop, Success, and Pass Buttons -->
-  <div class="buttons-container">
+  <!-- Start & Stop Buttons -->
+  <div class="start-stop-container">
     <button class="btn" id="start-btn">Start</button>
     <button class="btn" id="stop-btn" disabled>Stop</button>
+  </div>
+
+  <!-- Success & Pass Buttons -->
+  <div class="buttons-container">
     <button class="btn" id="success-btn" disabled>Success</button>
     <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
   </div>
@@ -199,89 +207,158 @@
   </div>
 
   <script>
-    let teamCounter = 2; // Initial number of teams
-    let timer; // Holds the interval timer
-    let timeLeft; // Remaining time
-    const timerInput = document.getElementById("timer");
+    const TIMER_DURATION = 30; // Adjustable timer duration
+    const MAX_PASSES = 3; // Maximum passes per turn
 
-    // Add a new team
-    document.getElementById("add-team-btn").addEventListener("click", () => {
-      teamCounter++;
+    let currentIndex = 0;
+    let team1Score = 0;
+    let team2Score = 0;
+    let currentTeam = null;
+    let timer;
+    let timeLeft = TIMER_DURATION;
+    let passesLeft = MAX_PASSES;
+    let proverbs = [];
 
-      const newTeamBox = document.createElement("div");
-      newTeamBox.classList.add("score-box");
-      newTeamBox.innerHTML = `
-        <input type="text" value="Team ${teamCounter}" />
-        <p id="team${teamCounter}-score">Score: 0</p>
-      `;
-      document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
-    });
+    async function fetchData() {
+      const response = await fetch('data.json');
+      proverbs = await response.json();
+      displayProverb();
+    }
 
-    // Start the timer
-    document.getElementById("start-btn").addEventListener("click", () => {
-      timeLeft = parseInt(timerInput.value, 10); // Get the timer value
-      if (isNaN(timeLeft) || timeLeft <= 0) {
-        alert("Please enter a valid time greater than 0.");
-        return;
+    function displayProverb() {
+      if (currentIndex >= 0 && currentIndex < proverbs.length) {
+        const proverb = proverbs[currentIndex];
+        document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
+        document.getElementById('proverb_en').textContent = proverb.proverb_en;
+
+        // Display points as tarbouches
+        const pointsContainer = document.getElementById('points');
+        pointsContainer.innerHTML = ''; // Clear previous tarbouches
+
+        for (let i = 0; i < proverb.points; i++) {
+          const tarbouch = document.createElement('img');
+          tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
+          tarbouch.alt = 'Tarbouch Icon';
+          tarbouch.className = 'tarbouch';
+          pointsContainer.appendChild(tarbouch);
+        }
+      } else {
+        document.getElementById('proverb_ar').textContent = "No more proverbs!";
+        document.getElementById('proverb_en').textContent = "";
+        document.getElementById('points').innerHTML = ""; // Clear points container
       }
+    }
 
-      timerInput.disabled = true; // Lock the timer input
-      document.getElementById("start-btn").disabled = true;
-      document.getElementById("stop-btn").disabled = false;
+    function updateScore(points) {
+      if (currentTeam === 1) {
+        team1Score += points;
+        document.getElementById('team1-score').textContent = Score: ${team1Score};
+      } else if (currentTeam === 2) {
+        team2Score += points;
+        document.getElementById('team2-score').textContent = Score: ${team2Score};
+      }
+    }
+
+    function startTimer() {
+      timeLeft = TIMER_DURATION;
+      passesLeft = MAX_PASSES;
+      updatePassesLeft();
+      document.getElementById('timer').textContent = Time: ${timeLeft};
+      document.getElementById('start-btn').disabled = true;
+      document.getElementById('stop-btn').disabled = false;
+      document.getElementById('success-btn').disabled = false;
+      document.getElementById('pass-btn').disabled = false;
 
       timer = setInterval(() => {
         timeLeft--;
-        timerInput.value = timeLeft; // Update the timer display
-
+        document.getElementById('timer').textContent = Time: ${timeLeft};
         if (timeLeft <= 0) {
           clearInterval(timer);
-          alert("Time's up!");
-          resetTimer();
+          playBuzzer();
+          endTurn();
         }
       }, 1000);
-    });
+    }
 
-    // Stop the timer
-    document.getElementById("stop-btn").addEventListener("click", () => {
+    function stopTimer() {
       clearInterval(timer);
-      resetTimer();
+      endTurn();
+    }
+
+    function playBuzzer() {
+      const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
+      audio.play();
+    }
+
+    function endTurn() {
+      document.getElementById('start-btn').disabled = false;
+      document.getElementById('stop-btn').disabled = true;
+      document.getElementById('success-btn').disabled = true;
+      document.getElementById('pass-btn').disabled = true;
+    }
+
+    function updatePassesLeft() {
+      document.getElementById('passes-left').textContent = Passes Left: ${passesLeft};
+    }
+
+    document.getElementById('team1-score-box').addEventListener('click', () => {
+      currentTeam = 1;
+      document.getElementById('team1-score-box').classList.add('selected');
+      document.getElementById('team2-score-box').classList.remove('selected');
     });
 
-    // Reset the timer
-    function resetTimer() {
-      timerInput.disabled = false; // Unlock the timer input
-      document.getElementById("start-btn").disabled = false;
-      document.getElementById("stop-btn").disabled = true;
-    }
+    document.getElementById('team2-score-box').addEventListener('click', () => {
+      currentTeam = 2;
+      document.getElementById('team2-score-box').classList.add('selected');
+      document.getElementById('team1-score-box').classList.remove('selected');
+    });
 
-    // Example data for display
-    const proverbs = [
-      {
-        proverb_ar: "بعيد عن العين بعيد عن القلب",
-        proverb_en: "Out of sight, out of mind"
-      },
-      {
-        proverb_ar: "يلي بحفر حفرة لغيره بيوقع فيها",
-        proverb_en: "He who digs a pit for others falls into it himself"
-      }
-    ];
-
-    let currentIndex = 0;
-
-    // Display a proverb
-    function displayProverb() {
-      const proverb = proverbs[currentIndex];
-      if (proverb) {
-        document.getElementById("proverb_ar").textContent = proverb.proverb_ar;
-        document.getElementById("proverb_en").textContent = proverb.proverb_en;
+    document.getElementById('start-btn').addEventListener('click', () => {
+      if (currentTeam) {
+        startTimer();
       } else {
-        document.getElementById("proverb_ar").textContent = "No more proverbs!";
-        document.getElementById("proverb_en").textContent = "";
+        alert('Please select a team first!');
       }
-    }
+    });
 
-    // Initialize with the first proverb
-    displayProverb();
+    document.getElementById('stop-btn').addEventListener('click', stopTimer);
+
+    document.getElementById('success-btn').addEventListener('click', () => {
+      if (currentIndex < proverbs.length) {
+        updateScore(proverbs[currentIndex].points);
+        currentIndex++;
+        displayProverb();
+      }
+    });
+
+    document.getElementById('pass-btn').addEventListener('click', () => {
+      if (passesLeft > 0) {
+        passesLeft--;
+        updatePassesLeft();
+        if (currentIndex < proverbs.length) {
+          currentIndex++;
+          displayProverb();
+        }
+      } else {
+        alert('No more passes left!');
+      }
+    });
+
+    document.getElementById('back-btn').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        displayProverb();
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      if (currentIndex < proverbs.length - 1) {
+        currentIndex++;
+        displayProverb();
+      }
+    });
+
+    fetchData();
   </script>
 </body>
 </html>
