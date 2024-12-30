@@ -22,6 +22,7 @@
       align-items: center;
       gap: 20px;
       margin: 20px 0;
+      flex-wrap: wrap;
     }
 
     .score-box {
@@ -111,6 +112,7 @@
   <script>
     let teamCounter = 2; // Initial number of teams
 
+    // Function to add a new team
     document.getElementById("add-team-btn").addEventListener("click", () => {
       teamCounter++;
 
@@ -125,6 +127,36 @@
       // Append the new team box to the scores container
       document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
     });
+
+    // Example data for display (this should be replaced with actual data)
+    const proverbs = [
+      {
+        proverb_ar: "بعيد عن العين بعيد عن القلب",
+        proverb_en: "Out of sight, out of mind"
+      },
+      {
+        proverb_ar: "يلي بحفر حفرة لغيره بيوقع فيها",
+        proverb_en: "He who digs a pit for others falls into it himself"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    // Function to display a proverb
+    function displayProverb() {
+      const proverb = proverbs[currentIndex];
+      if (proverb) {
+        document.getElementById("proverb_ar").textContent = proverb.proverb_ar;
+        document.getElementById("proverb_en").textContent = proverb.proverb_en;
+      } else {
+        document.getElementById("proverb_ar").textContent = "No more proverbs!";
+        document.getElementById("proverb_en").textContent = "";
+      }
+    }
+
+    // Initialize with the first proverb
+    displayProverb();
   </script>
 </body>
 </html>
+
