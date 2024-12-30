@@ -73,6 +73,17 @@
       margin-bottom: 10px;
     }
 
+    .points-container {
+      margin-top: 10px;
+    }
+
+    .tarbouch {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 2px;
+    }
+
     .buttons-container, .team-container {
       display: flex;
       gap: 10px;
@@ -146,6 +157,7 @@
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
     <p class="proverb-en" id="proverb_en"></p>
+    <div class="points-container" id="points"></div>
   </div>
 
   <!-- Timer -->
@@ -190,9 +202,22 @@
         const proverb = proverbs[currentIndex];
         document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
         document.getElementById('proverb_en').textContent = proverb.proverb_en;
+
+        // Display points as tarbouches
+        const pointsContainer = document.getElementById('points');
+        pointsContainer.innerHTML = ''; // Clear previous tarbouches
+
+        for (let i = 0; i < proverb.points; i++) {
+          const tarbouch = document.createElement('img');
+          tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
+          tarbouch.alt = 'Tarbouch Icon';
+          tarbouch.className = 'tarbouch';
+          pointsContainer.appendChild(tarbouch);
+        }
       } else {
         document.getElementById('proverb_ar').textContent = "No more proverbs!";
         document.getElementById('proverb_en').textContent = "";
+        document.getElementById('points').innerHTML = ""; // Clear points container
       }
     }
 
