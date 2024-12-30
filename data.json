@@ -3,30 +3,87 @@
     "proverb_en": "Out of sight, out of mind",
     "proverb_ar": "بعيد عن العين بعيد عن القلب",
     "proverb_ph": "b3id 3an l 3ayn b3id 3an l aleb",
-    "points": 5
+    "points": 2
   },
   {
     "proverb_en": "He who digs a pit for others falls into it himself",
     "proverb_ar": "يلي بحفر حفرة لغيره بيوقع فيها",
     "proverb_ph": "yalli b7afr 7ofra l ghayro byou2a3 fiha",
-    "points": 8
+    "points": 2
   },
   {
     "proverb_en": "Patience is the key to relief",
     "proverb_ar": "الصبر مفتاح الفرج",
     "proverb_ph": "al sabr mefta7 al faraj",
-    "points": 3
+    "points": 1
   },
   {
-    "proverb_en": "What is hidden is greater",
-    "proverb_ar": "ما خفي أعظم",
-    "proverb_ph": "ma khafa a3zam",
-    "points": 4
+    "proverb_en": "We became a salad",
+    "proverb_ar": "رحنا سلطة",
+    "proverb_ph": "Re7na slata",
+    "points": 2
   },
   {
-    "proverb_en": "Do good and throw it in the sea",
-    "proverb_ar": "اعمل خير وارميه بالبحر",
-    "proverb_ph": "i3mal kheir w armi bil b7ar",
-    "points": 6
+    "proverb_en": "Every speech has its time",
+    "proverb_ar": "كل حديث إلو حديث",
+    "proverb_ph": "Kil hadis ilo hadees",
+    "points": 1
+  },
+  {
+      "proverb_en": "Go and mop the sea",
+      "proverb_ar": "روح بلط البحر",
+      "proverb_ph": "Roo7 balet el ba7er",
+      "points": 2,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "We became a salad",
+      "proverb_ar": "رحنا سلطة",
+      "proverb_ph": "Re7na slata",
+      "points": 1,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "Every talk has a counter talk",
+      "proverb_ar": "كل حديث إلو حديث",
+      "proverb_ph": "Kil hadis ilo hadees",
+      "points": 2,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "Don't give face",
+      "proverb_ar": "ما تعطي وجه",
+      "proverb_ph": "Ma ta3tee wej",
+      "points": 1,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "What's up? Nothing's up.",
+      "proverb_ar": "شو في ما في",
+      "proverb_ph": "Shu fee, ma fee",
+      "points": 1,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "Don't come here",
+      "proverb_ar": "لا تزي",
+      "proverb_ph": "La tizi",
+      "points": 1,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "On my head",
+      "proverb_ar": "على راسي",
+      "proverb_ph": "3ala rase",
+      "points": 1,
+      "category": "proverb"
+  },
+  {
+      "proverb_en": "We have nothing to do",
+      "proverb_ar": "ما في شي ورانا",
+      "proverb_ph": "Ma fe shi warana",
+      "points": 1,
+      "category": "proverb"
   }
+
 ]
