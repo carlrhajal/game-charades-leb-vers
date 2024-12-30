@@ -29,6 +29,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .score-box.selected {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #870000;
     }
 
     .score-box h2 {
@@ -96,6 +103,30 @@
       color: #870000;
       margin-top: 10px;
     }
+
+    .navigation-arrows {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .arrow-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #870000;
+    }
+
+    .arrow-btn:hover {
+      color: #a30000;
+    }
+
+    .passes-left {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #870000;
+    }
   </style>
 </head>
 <body>
@@ -111,12 +142,6 @@
     </div>
   </div>
 
-  <!-- Team Selection -->
-  <div class="team-container">
-    <button class="btn" id="team1-btn">Team 1</button>
-    <button class="btn" id="team2-btn">Team 2</button>
-  </div>
-
   <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
@@ -125,26 +150,33 @@
 
   <!-- Timer -->
   <p class="timer" id="timer">Time: 30</p>
+  <p class="passes-left" id="passes-left">Passes Left: 3</p>
 
   <!-- Action Buttons -->
   <div class="buttons-container">
     <button class="btn" id="start-btn">Start</button>
+    <button class="btn" id="stop-btn" disabled>Stop</button>
     <button class="btn" id="success-btn" disabled>Success</button>
     <button class="btn" id="pass-btn" disabled>Pass</button>
   </div>
 
+  <!-- Navigation -->
+  <div class="navigation-arrows">
+    <button class="arrow-btn" id="back-btn">←</button>
+    <button class="arrow-btn" id="next-btn">→</button>
+  </div>
+
   <script>
-    // Global variables
+    const TIMER_DURATION = 30; // Adjustable timer duration
+    const MAX_PASSES = 3; // Maximum passes per turn
+
     let currentIndex = 0;
     let team1Score = 0;
     let team2Score = 0;
     let currentTeam = null;
     let timer;
-    let timeLeft;
-    
-    // Editable timer duration
-    const TIMER_DURATION = 30; // Change this value to adjust the timer duration
-
+    let timeLeft = TIMER_DURATION;
+    let passesLeft = MAX_PASSES;
     let proverbs = [];
 
     async function fetchData() {
@@ -175,8 +207,15 @@
     }
 
     function startTimer() {
-      timeLeft = TIMER_DURATION; // Use the variable for duration
+      timeLeft = TIMER_DURATION;
+      passesLeft = MAX_PASSES;
+      updatePassesLeft();
       document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+      document.getElementById('start-btn').disabled = true;
+      document.getElementById('stop-btn').disabled = false;
+      document.getElementById('success-btn').disabled = false;
+      document.getElementById('pass-btn').disabled = false;
+
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('timer').textContent = `Time: ${timeLeft}`;
@@ -188,33 +227,48 @@
       }, 1000);
     }
 
+    function stopTimer() {
+      clearInterval(timer);
+      endTurn();
+    }
+
     function playBuzzer() {
       const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
       audio.play();
     }
 
     function endTurn() {
+      document.getElementById('start-btn').disabled = false;
+      document.getElementById('stop-btn').disabled = true;
       document.getElementById('success-btn').disabled = true;
       document.getElementById('pass-btn').disabled = true;
     }
 
-    document.getElementById('team1-btn').addEventListener('click', () => {
+    function updatePassesLeft() {
+      document.getElementById('passes-left').textContent = `Passes Left: ${passesLeft}`;
+    }
+
+    document.getElementById('team1-score-box').addEventListener('click', () => {
       currentTeam = 1;
+      document.getElementById('team1-score-box').classList.add('selected');
+      document.getElementById('team2-score-box').classList.remove('selected');
     });
 
-    document.getElementById('team2-btn').addEventListener('click', () => {
+    document.getElementById('team2-score-box').addEventListener('click', () => {
       currentTeam = 2;
+      document.getElementById('team2-score-box').classList.add('selected');
+      document.getElementById('team1-score-box').classList.remove('selected');
     });
 
     document.getElementById('start-btn').addEventListener('click', () => {
       if (currentTeam) {
-        document.getElementById('success-btn').disabled = false;
-        document.getElementById('pass-btn').disabled = false;
         startTimer();
       } else {
         alert('Please select a team first!');
       }
     });
+
+    document.getElementById('stop-btn').addEventListener('click', stopTimer);
 
     document.getElementById('success-btn').addEventListener('click', () => {
       if (currentIndex < proverbs.length) {
@@ -225,7 +279,27 @@
     });
 
     document.getElementById('pass-btn').addEventListener('click', () => {
-      if (currentIndex < proverbs.length) {
+      if (passesLeft > 0) {
+        passesLeft--;
+        updatePassesLeft();
+        if (currentIndex < proverbs.length) {
+          currentIndex++;
+          displayProverb();
+        }
+      } else {
+        alert('No more passes left!');
+      }
+    });
+
+    document.getElementById('back-btn').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        displayProverb();
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      if (currentIndex < proverbs.length - 1) {
         currentIndex++;
         displayProverb();
       }
