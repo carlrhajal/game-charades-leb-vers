@@ -3,12 +3,30 @@
     "proverb_en": "Out of sight, out of mind",
     "proverb_ar": "بعيد عن العين بعيد عن القلب",
     "proverb_ph": "b3id 3an l 3ayn b3id 3an l aleb",
-    "points": 1
+    "points": 5
   },
   {
     "proverb_en": "He who digs a pit for others falls into it himself",
     "proverb_ar": "يلي بحفر حفرة لغيره بيوقع فيها",
     "proverb_ph": "yalli b7afr 7ofra l ghayro byou2a3 fiha",
     "points": 8
+  },
+  {
+    "proverb_en": "Patience is the key to relief",
+    "proverb_ar": "الصبر مفتاح الفرج",
+    "proverb_ph": "al sabr mefta7 al faraj",
+    "points": 3
+  },
+  {
+    "proverb_en": "What is hidden is greater",
+    "proverb_ar": "ما خفي أعظم",
+    "proverb_ph": "ma khafa a3zam",
+    "points": 4
+  },
+  {
+    "proverb_en": "Do good and throw it in the sea",
+    "proverb_ar": "اعمل خير وارميه بالبحر",
+    "proverb_ph": "i3mal kheir w armi bil b7ar",
+    "points": 6
   }
 ]
