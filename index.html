@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7zar Shou Game</title>
   <style>
+    @font-face {
+      font-family: 'LebaneseFont';
+      src: url('./LebaneseFont.ttf'); /* Replace with the path to your custom font */
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'LebaneseFont', Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
@@ -19,10 +24,8 @@
     .scores-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 20px;
+      gap: 50px;
       margin: 20px 0;
-      flex-wrap: wrap;
     }
 
     .score-box {
@@ -38,8 +41,9 @@
     .score-box input {
       border: none;
       background: transparent;
-      text-align: center;
+      font-family: 'LebaneseFont', Arial, sans-serif;
       font-size: 1.2rem;
+      text-align: center;
       font-weight: bold;
     }
 
@@ -62,6 +66,7 @@
     }
 
     .card-container {
+      position: relative;
       background-color: #fff;
       width: 400px;
       height: 300px;
@@ -89,46 +94,167 @@
       text-align: center;
       margin-bottom: 10px;
     }
+
+    .timer {
+      font-size: 1.5rem;
+      color: #870000;
+      margin: 10px 0;
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      background-color: #870000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #a30000;
+    }
+
+    .btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .btn-pass {
+      background-color: black;
+      color: #fff;
+    }
+
+    .btn-pass:hover {
+      background-color: #555;
+    }
+
+    .navigation-arrows {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .arrow-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #870000;
+    }
+
+    .arrow-btn:hover {
+      color: #a30000;
+    }
+
+    .passes-left {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #870000;
+    }
   </style>
 </head>
 <body>
+  <!-- Team Scores -->
   <div class="scores-container" id="scores-container">
     <div class="score-box" id="team1-score-box">
-      <input type="text" value="Team 1" />
+      <input id="team1-name" value="Team 1" />
       <p id="team1-score">Score: 0</p>
     </div>
     <div class="score-box" id="team2-score-box">
-      <input type="text" value="Team 2" />
+      <input id="team2-name" value="Team 2" />
       <p id="team2-score">Score: 0</p>
     </div>
     <button class="add-team-btn" id="add-team-btn">+</button>
   </div>
 
+  <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
     <p class="proverb-en" id="proverb_en"></p>
   </div>
 
+  <!-- Timer -->
+  <p class="timer">Time: <input type="number" id="timer" value="30" style="width: 50px;" /> seconds</p>
+  <p class="passes-left" id="passes-left">Passes Left: 3</p>
+
+  <!-- Start, Stop, Success, and Pass Buttons -->
+  <div class="buttons-container">
+    <button class="btn" id="start-btn">Start</button>
+    <button class="btn" id="stop-btn" disabled>Stop</button>
+    <button class="btn" id="success-btn" disabled>Success</button>
+    <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
+  </div>
+
+  <!-- Navigation -->
+  <div class="navigation-arrows">
+    <button class="arrow-btn" id="back-btn">←</button>
+    <button class="arrow-btn" id="next-btn">→</button>
+  </div>
+
   <script>
     let teamCounter = 2; // Initial number of teams
+    let timer; // Holds the interval timer
+    let timeLeft; // Remaining time
+    const timerInput = document.getElementById("timer");
 
-    // Function to add a new team
+    // Add a new team
     document.getElementById("add-team-btn").addEventListener("click", () => {
       teamCounter++;
 
-      // Create a new team box
       const newTeamBox = document.createElement("div");
       newTeamBox.classList.add("score-box");
       newTeamBox.innerHTML = `
         <input type="text" value="Team ${teamCounter}" />
         <p id="team${teamCounter}-score">Score: 0</p>
       `;
-
-      // Append the new team box to the scores container
       document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
     });
 
-    // Example data for display (this should be replaced with actual data)
+    // Start the timer
+    document.getElementById("start-btn").addEventListener("click", () => {
+      timeLeft = parseInt(timerInput.value, 10); // Get the timer value
+      if (isNaN(timeLeft) || timeLeft <= 0) {
+        alert("Please enter a valid time greater than 0.");
+        return;
+      }
+
+      timerInput.disabled = true; // Lock the timer input
+      document.getElementById("start-btn").disabled = true;
+      document.getElementById("stop-btn").disabled = false;
+
+      timer = setInterval(() => {
+        timeLeft--;
+        timerInput.value = timeLeft; // Update the timer display
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          alert("Time's up!");
+          resetTimer();
+        }
+      }, 1000);
+    });
+
+    // Stop the timer
+    document.getElementById("stop-btn").addEventListener("click", () => {
+      clearInterval(timer);
+      resetTimer();
+    });
+
+    // Reset the timer
+    function resetTimer() {
+      timerInput.disabled = false; // Unlock the timer input
+      document.getElementById("start-btn").disabled = false;
+      document.getElementById("stop-btn").disabled = true;
+    }
+
+    // Example data for display
     const proverbs = [
       {
         proverb_ar: "بعيد عن العين بعيد عن القلب",
@@ -142,7 +268,7 @@
 
     let currentIndex = 0;
 
-    // Function to display a proverb
+    // Display a proverb
     function displayProverb() {
       const proverb = proverbs[currentIndex];
       if (proverb) {
@@ -159,4 +285,3 @@
   </script>
 </body>
 </html>
-
