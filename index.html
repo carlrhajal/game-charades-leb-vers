@@ -233,6 +233,7 @@
     let timeLeft = TIMER_DURATION;
     let passesLeft = MAX_PASSES;
     let proverbs = [];
+    let displayedProverbs = []; // Track displayed proverbs
 
     async function fetchData() {
       const response = await fetch('data.json');
@@ -241,8 +242,27 @@
     }
 
     function displayProverb() {
-      if (currentIndex >= 0 && currentIndex < proverbs.length) {
-        const proverb = proverbs[currentIndex];
+        // Check if all proverbs have been displayed
+        if (displayedProverbs.length === proverbs.length) {
+          alert("All proverbs have been displayed!");
+          document.getElementById('proverb_ar').textContent = "No more proverbs!";
+          document.getElementById('proverb_ph').textContent = "—";
+          document.getElementById('proverb_en').textContent = "";
+          document.getElementById('points').innerHTML = ""; // Clear points container
+          return;
+        }
+
+        // Select a random proverb that hasn't been displayed yet
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * proverbs.length);
+        } while (displayedProverbs.includes(randomIndex));
+
+        // Add the selected proverb index to the displayedProverbs list
+        displayedProverbs.push(randomIndex);
+
+        // Display the selected proverb
+        const proverb = proverbs[randomIndex];
         document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
         document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
         document.getElementById('proverb_en').textContent = proverb.proverb_en;
@@ -258,12 +278,30 @@
           tarbouch.className = 'tarbouch';
           pointsContainer.appendChild(tarbouch);
         }
-      } else {
-        document.getElementById('proverb_ar').textContent = "No more proverbs!";
-        document.getElementById('proverb_ph').textContent = "—";
-        document.getElementById('proverb_en').textContent = "";
-        document.getElementById('points').innerHTML = ""; // Clear points container
-      }
+      
+      // if (currentIndex >= 0 && currentIndex < proverbs.length) {
+      //   const proverb = proverbs[currentIndex];
+      //   document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
+      //   document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
+      //   document.getElementById('proverb_en').textContent = proverb.proverb_en;
+
+      //   // Display points as tarbouches
+      //   const pointsContainer = document.getElementById('points');
+      //   pointsContainer.innerHTML = ''; // Clear previous tarbouches
+
+      //   for (let i = 0; i < proverb.points; i++) {
+      //     const tarbouch = document.createElement('img');
+      //     tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
+      //     tarbouch.alt = 'Tarbouch Icon';
+      //     tarbouch.className = 'tarbouch';
+      //     pointsContainer.appendChild(tarbouch);
+      //   }
+      // } else {
+      //   document.getElementById('proverb_ar').textContent = "No more proverbs!";
+      //   document.getElementById('proverb_ph').textContent = "—";
+      //   document.getElementById('proverb_en').textContent = "";
+      //   document.getElementById('points').innerHTML = ""; // Clear points container
+      // }
     }
 
     function updateScore(points) {
