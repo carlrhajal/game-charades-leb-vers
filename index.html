@@ -24,10 +24,10 @@
     .scores-container {
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 20px;
       margin: 20px 0;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .score-box {
@@ -37,20 +37,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       text-align: center;
       cursor: pointer;
-    }
-
-    .score-box.selected {
-      box-shadow: 0 0 10px #870000;
-      transform: scale(1.1);
-    }
-
-    .score-box input {
-      border: none;
-      background: transparent;
-      font-family: 'LebaneseFont', Arial, sans-serif;
-      font-size: 1.2rem;
-      text-align: center;
-      font-weight: bold;
     }
 
     .add-team-btn {
@@ -153,24 +139,6 @@
       background-color: #555;
     }
 
-    .navigation-arrows {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .arrow-btn {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #870000;
-    }
-
-    .arrow-btn:hover {
-      color: #a30000;
-    }
-
     .passes-left {
       margin-top: 10px;
       font-size: 1.2rem;
@@ -215,53 +183,76 @@
     <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
   </div>
 
-  <!-- Navigation -->
-  <div class="navigation-arrows">
-    <button class="arrow-btn" id="back-btn">←</button>
-    <button class="arrow-btn" id="next-btn">→</button>
-  </div>
-
   <script>
-    let teamCounter = 2;
-    let currentTeam = null;
+    let proverbs = [];
+    let currentIndex = 0;
     let timer;
     let timeLeft;
-    let proverbs = [];
+    let teamCounter = 2;
 
     async function fetchData() {
-      try {
-        const response = await fetch('data.json');
-        proverbs = await response.json();
-        currentIndex = 0;
-        displayProverb();
-      } catch (error) {
-        console.error('Error fetching proverbs:', error);
-        document.getElementById('proverb_ar').textContent = "Error loading proverbs.";
-        document.getElementById('proverb_en').textContent = "";
-      }
+      const response = await fetch('data.json'); // Ensure data.json exists in the same directory
+      proverbs = await response.json();
+      displayProverb();
     }
 
     function displayProverb() {
-      if (proverbs.length === 0) {
-        document.getElementById('proverb_ar').textContent = "No proverbs available.";
-        document.getElementById('proverb_en').textContent = "";
+      if (currentIndex >= 0 && currentIndex < proverbs.length) {
+        const proverb = proverbs[currentIndex];
+        document.getElementById('proverb_ar').textContent = proverb.proverb_ar || "—";
+        document.getElementById('proverb_en').textContent = proverb.proverb_en || "—";
+
+        const pointsContainer = document.getElementById('points');
+        pointsContainer.innerHTML = ""; // Clear previous points
+        for (let i = 0; i < (proverb.points || 0); i++) {
+          const tarbouch = document.createElement('img');
+          tarbouch.src = './tarbouch.png';
+          tarbouch.alt = 'Tarbouch Icon';
+          tarbouch.className = 'tarbouch';
+          pointsContainer.appendChild(tarbouch);
+        }
+      }
+    }
+
+    document.getElementById("add-team-btn").addEventListener("click", () => {
+      teamCounter++;
+      const newTeamBox = document.createElement("div");
+      newTeamBox.classList.add("score-box");
+      newTeamBox.innerHTML = `
+        <input type="text" value="Team ${teamCounter}" />
+        <p id="team${teamCounter}-score">Score: 0</p>
+      `;
+      document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
+    });
+
+    document.getElementById("start-btn").addEventListener("click", () => {
+      timeLeft = parseInt(document.getElementById("timer-input").value, 10);
+      if (isNaN(timeLeft) || timeLeft <= 0) {
+        alert("Enter a valid time!");
         return;
       }
 
-      const proverb = proverbs[currentIndex];
-      document.getElementById('proverb_ar').textContent = proverb.proverb_ar || "—";
-      document.getElementById('proverb_en').textContent = proverb.proverb_en || "—";
+      document.getElementById("start-btn").disabled = true;
+      document.getElementById("stop-btn").disabled = false;
 
-      const pointsContainer = document.getElementById('points');
-      pointsContainer.innerHTML = "";
-      for (let i = 0; i < (proverb.points || 0); i++) {
-        const tarbouch = document.createElement('img');
-        tarbouch.src = './tarbouch.png';
-        tarbouch.alt = 'Tarbouch Icon';
-        tarbouch.className = 'tarbouch';
-        pointsContainer.appendChild(tarbouch);
-      }
-    }
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer-input").value = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          alert("Time's up!");
+          document.getElementById("start-btn").disabled = false;
+          document.getElementById("stop-btn").disabled = true;
+        }
+      }, 1000);
+    });
+
+    document.getElementById("stop-btn").addEventListener("click", () => {
+      clearInterval(timer);
+      document.getElementById("start-btn").disabled = false;
+      document.getElementById("stop-btn").disabled = true;
+    });
 
     fetchData();
   </script>
