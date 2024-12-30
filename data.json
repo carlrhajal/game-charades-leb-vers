@@ -552,37 +552,44 @@
 {
   "proverb_ar":"الجار قبل الدار",
   "proverb_ph":"El jar abel l dar",
-  "meaning_en":"The neighbor comes before the house."
+  "proverb_en":"The neighbor comes before the house.",
+  "points": 2
 },
 {
   "proverb_ar":"اللي بياكل لوحده بيموت لوحده",
   "proverb_ph":"Li byekoul la wahdo bi mout la wahdo",
-  "meaning_en":"He who eats alone, dies alone."
+  "proverb_en":"He who eats alone, dies alone.",
+  "points": 2
 },
 {
   "proverb_ar":"اللي ما عنده كبير يشتري كبير",
   "proverb_ph":"Li ma 3endo kbir yeshtare kbir",
-  "meaning_en":"If you don't have an elder, buy one (seek their wisdom)."
+  "proverb_en":"If you don't have an elder, buy one (seek their wisdom).",
+  "points": 2
 },
 {
   "proverb_ar":"اللي بيطلع بإيده بيطلع بإجرو",
   "proverb_ph":"Li byotla3 bi 2ido byotla bi ejor",
-  "meaning_en":"What is earned by the hand is spent by the foot."
+  "proverb_en":"What is earned by the hand is spent by the foot.",
+  "points": 1
 },
 {
   "proverb_ar":"جوابه تحت باطه",
   "proverb_ph":"Jawebo tahet bato",
-  "meaning_en":"The answer lies under his arm (he knows the truth but hides it)."
+  "proverb_en":"The answer lies under his arm (he knows the truth but hides it).",
+  "points": 1
 },
 {
   "proverb_ar":"يلي تحت باطه مسلة بتنعرو",
   "proverb_ph":"Yalli ta7t bato masla btin3aro",
-  "meaning_en":"If someone has a needle under their arm, it will prick them."
+  "proverb_en":"If someone has a needle under their arm, it will prick them.",
+  "points": 3
 },
 {
   "proverb_ar":"بيشيل الزير من البير",
   "proverb_ph":"Bi chil l zir men l bir",
-  "meaning_en":"He can pull the jar from the well (a resourceful person)."
+  "meaning_en":"He can pull the jar from the well (a resourceful person).",
+  "points": 3
 },
 {
   "proverb_en": "A thousand words of cowardice are better than one word 'may he rest in peace'.",
