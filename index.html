@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hzar Chou Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .proverb {
+      margin: 20px 0;
+      font-size: 1.5rem;
+      line-height: 1.8;
+    }
+    .points {
+      font-size: 1.2rem;
+      color: #007BFF;
+    }
+    .next-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .next-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hzar Chou Game</h1>
+    <div id="content">
+      <p class="proverb" id="proverb_en">Loading...</p>
+      <p class="proverb" id="proverb_ar"></p>
+      <p class="points" id="points"></p>
+    </div>
+    <button class="next-btn" id="next-btn">Next</button>
+  </div>
+  <script>
+    let currentIndex = 0;
+    let proverbs = [];
+
+    async function fetchData() {
+      const response = await fetch('data.json');
+      proverbs = await response.json();
+      displayProverb();
+    }
+
+    function displayProverb() {
+      if (currentIndex < proverbs.length) {
+        document.getElementById('proverb_en').textContent = proverbs[currentIndex].proverb_en;
+        document.getElementById('proverb_ar').textContent = proverbs[currentIndex].proverb_ar;
+        document.getElementById('points').textContent = `Points: ${proverbs[currentIndex].points}`;
+      } else {
+        document.getElementById('proverb_en').textContent = "No more proverbs!";
+        document.getElementById('proverb_ar').textContent = "";
+        document.getElementById('points').textContent = "";
+      }
+    }
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      currentIndex++;
+      displayProverb();
+    });
+
+    fetchData();
+  </script>
+</body>
+</html>
