@@ -548,6 +548,119 @@
     "proverb_ph": "La hon w bas",
     "points": 1,
     "category": "saying"
+},
+{
+  "proverb_ar":"الجار قبل الدار",
+  "proverb_ph":"El jar abel l dar",
+  "meaning_en":"The neighbor comes before the house."
+},
+{
+  "proverb_ar":"اللي بياكل لوحده بيموت لوحده",
+  "proverb_ph":"Li byekoul la wahdo bi mout la wahdo",
+  "meaning_en":"He who eats alone, dies alone."
+},
+{
+  "proverb_ar":"اللي ما عنده كبير يشتري كبير",
+  "proverb_ph":"Li ma 3endo kbir yeshtare kbir",
+  "meaning_en":"If you don't have an elder, buy one (seek their wisdom)."
+},
+{
+  "proverb_ar":"اللي بيطلع بإيده بيطلع بإجرو",
+  "proverb_ph":"Li byotla3 bi 2ido byotla bi ejor",
+  "meaning_en":"What is earned by the hand is spent by the foot."
+},
+{
+  "proverb_ar":"جوابه تحت باطه",
+  "proverb_ph":"Jawebo tahet bato",
+  "meaning_en":"The answer lies under his arm (he knows the truth but hides it)."
+},
+{
+  "proverb_ar":"يلي تحت باطه مسلة بتنعرو",
+  "proverb_ph":"Yalli ta7t bato masla btin3aro",
+  "meaning_en":"If someone has a needle under their arm, it will prick them."
+},
+{
+  "proverb_ar":"بيشيل الزير من البير",
+  "proverb_ph":"Bi chil l zir men l bir",
+  "meaning_en":"He can pull the jar from the well (a resourceful person)."
+},
+{
+  "proverb_en": "A thousand words of cowardice are better than one word 'may he rest in peace'.",
+  "proverb_ar": "ألف كلمة جبان ولا كلمة الله يرحمو",
+  "proverb_ph": "Alf kilmet jaban wala kilmet Allah yer7amo",
+  "points": 3
+},
+{
+  "proverb_en": "Whoever gives, God increases for them.",
+  "proverb_ar": "اللي من إيدو، الله يزيدو",
+  "proverb_ph": "Elli min eedo, Allah yzeedo",
+  "points": 2
+},
+{
+  "proverb_en": "A child is a child, even if he rules a country.",
+  "proverb_ar": "الولد ولد، ولو حكم بلد",
+  "proverb_ph": "El walad walad, walaw 7akam balad",
+  "points": 2
+},
+{
+  "proverb_en": "Keeps the donkey distracted from its feed.",
+  "proverb_ar": "بيلهي الحمار عن عليقه",
+  "proverb_ph": "Beylhi el 7mar 3an 3ali2o",
+  "points": 3
+},
+{
+  "proverb_en": "From your mouth to heaven's door.",
+  "proverb_ar": "من تمك لباب السما",
+  "proverb_ph": "Min timak la beb l sama",
+  "points": 1
+},
+{
+  "proverb_en": "The monkey in his mother’s eyes is a gazelle.",
+  "proverb_ar": "القرد بعين إمو غزال.",
+  "proverb_ph": "El 2erd b3ein emmo ghazel",
+  "points": 2
+},
+{
+  "proverb_en": "Like a deaf man at a wedding procession.",
+  "proverb_ar": "متل الأطرش بالزفة",
+  "proverb_ph": "Metel l 2atrach bel zaffe",
+  "points": 3
+},
+{
+  "proverb_en": "Like Wednesday in the middle of the week.",
+  "proverb_ar": "متل الأربعا بنص الجمعة",
+  "proverb_ph": "Metel l 2orb3a bi nos l jem3a",
+  "points": 2
+},
+{
+  "proverb_en": "All of us for the nation.",
+  "proverb_ar": "كلنا للوطن",
+  "proverb_ph": "Koulouna lal watan",
+  "points": 1
+},
+{
+  "proverb_en": "Turn the knife on the wound.",
+  "proverb_ar": "عاد عالجرح",
+  "proverb_ph": "3ad 3al jeri7",
+  "points": 2
+},
+{
+  "proverb_en": "Dying from hunger.",
+  "proverb_ar": "ميت من الجوع",
+  "proverb_ph": "Mayit men l jou3",
+  "points": 1
+},
+{
+  "proverb_en": "There is no smoke without fire.",
+  "proverb_ar": "ما في دخان بلا نار.",
+  "proverb_ph": "Ma fi dukhkhan bala nar",
+  "points": 2
+},
+{
+  "proverb_en": "We’re confused, bald one, about where to kiss you.",
+  "proverb_ar": "احترنا يا قرعة منين بدنا نبوسك.",
+  "proverb_ph": "E7tarna ya 2ar3a menen badna nbosik",
+  "points": 3
 }
 
 ]
