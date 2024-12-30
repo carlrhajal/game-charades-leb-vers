@@ -11,7 +11,7 @@
       padding: 0;
       background-color: #f4f4f4;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       height: 100vh;
     }
@@ -28,6 +28,7 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
+      margin-top: 20px;
     }
 
     .proverb-ar {
@@ -57,8 +58,13 @@
       height: 30px;
     }
 
-    .next-btn {
+    .buttons-container {
+      display: flex;
+      gap: 10px;
       margin-top: 20px;
+    }
+
+    .btn {
       background-color: #870000;
       color: #fff;
       border: none;
@@ -68,8 +74,32 @@
       cursor: pointer;
     }
 
-    .next-btn:hover {
+    .btn:hover {
       background-color: #a30000;
+    }
+
+    .navigation-arrows {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .arrow-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #870000;
+    }
+
+    .arrow-btn:hover {
+      color: #a30000;
+    }
+
+    .score {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -81,10 +111,22 @@
       <!-- Tarbouches will appear here -->
     </div>
   </div>
-  <button class="next-btn" id="next-btn">Next</button>
+
+  <div class="buttons-container">
+    <button class="btn" id="success-btn">Success</button>
+    <button class="btn" id="pass-btn">Pass</button>
+  </div>
+
+  <div class="navigation-arrows">
+    <button class="arrow-btn" id="back-btn">←</button>
+    <button class="arrow-btn" id="next-btn">→</button>
+  </div>
+
+  <p class="score" id="score">Score: 0</p>
 
   <script>
     let currentIndex = 0;
+    let score = 0;
     let proverbs = [];
 
     async function fetchData() {
@@ -94,7 +136,7 @@
     }
 
     function displayProverb() {
-      if (currentIndex < proverbs.length) {
+      if (currentIndex >= 0 && currentIndex < proverbs.length) {
         const proverb = proverbs[currentIndex];
         document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
         document.getElementById('proverb_en').textContent = proverb.proverb_en;
@@ -116,9 +158,38 @@
       }
     }
 
+    function updateScore(points) {
+      score += points;
+      document.getElementById('score').textContent = `Score: ${score}`;
+    }
+
+    document.getElementById('success-btn').addEventListener('click', () => {
+      if (currentIndex < proverbs.length) {
+        updateScore(proverbs[currentIndex].points);
+        currentIndex++;
+        displayProverb();
+      }
+    });
+
+    document.getElementById('pass-btn').addEventListener('click', () => {
+      if (currentIndex < proverbs.length) {
+        currentIndex++;
+        displayProverb();
+      }
+    });
+
+    document.getElementById('back-btn').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        displayProverb();
+      }
+    });
+
     document.getElementById('next-btn').addEventListener('click', () => {
-      currentIndex++;
-      displayProverb();
+      if (currentIndex < proverbs.length - 1) {
+        currentIndex++;
+        displayProverb();
+      }
     });
 
     fetchData();
