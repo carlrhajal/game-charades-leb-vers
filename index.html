@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7zar Shou Game</title>
   <style>
-    @font-face {
-      font-family: 'LebaneseFont';
-      src: url('./LebaneseFont.ttf'); /* Replace with your custom font path */
-    }
-
     body {
-      font-family: 'LebaneseFont', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
@@ -24,6 +19,7 @@
     .scores-container {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
       margin: 20px 0;
     }
@@ -38,17 +34,11 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .score-box.selected {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px #870000;
-    }
-
     .score-box input {
       border: none;
       background: transparent;
-      font-family: 'LebaneseFont', Arial, sans-serif;
-      font-size: 1.2rem;
       text-align: center;
+      font-size: 1.2rem;
       font-weight: bold;
     }
 
@@ -61,7 +51,9 @@
       border-radius: 50%;
       font-size: 1.5rem;
       cursor: pointer;
-      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .add-team-btn:hover {
@@ -69,7 +61,6 @@
     }
 
     .card-container {
-      position: relative;
       background-color: #fff;
       width: 400px;
       height: 300px;
@@ -91,158 +82,49 @@
       margin-bottom: 10px;
     }
 
-    .proverb-translit {
-      font-size: 1.4rem;
-      color: #555;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
     .proverb-en {
       font-size: 1.4rem;
       color: #333;
       text-align: center;
       margin-bottom: 10px;
     }
-
-    .points-container {
-      margin-top: 10px;
-    }
-
-    .tarbouch {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin: 2px;
-    }
-
-    .buttons-container, .start-stop-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      background-color: #870000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: #a30000;
-    }
-
-    .btn:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-    .btn-pass {
-      background-color: black;
-      color: #fff;
-    }
-
-    .btn-pass:hover {
-      background-color: #555;
-    }
-
-    .start-stop-icon {
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #870000;
-    }
-
-    .start-stop-icon:hover {
-      color: #a30000;
-    }
-
-    .timer {
-      font-size: 1.5rem;
-      color: #870000;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    .navigation-arrows {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .arrow-btn {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #870000;
-    }
-
-    .arrow-btn.disabled {
-      color: #ccc;
-      cursor: not-allowed;
-    }
-
-    .arrow-btn:hover:not(.disabled) {
-      color: #a30000;
-    }
-
-    .passes-left {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #870000;
-    }
   </style>
 </head>
 <body>
-  <!-- Team Scores -->
   <div class="scores-container" id="scores-container">
     <div class="score-box" id="team1-score-box">
-      <input id="team1-name" value="Team 1" />
+      <input type="text" value="Team 1" />
       <p id="team1-score">Score: 0</p>
     </div>
     <div class="score-box" id="team2-score-box">
-      <input id="team2-name" value="Team 2" />
+      <input type="text" value="Team 2" />
       <p id="team2-score">Score: 0</p>
     </div>
     <button class="add-team-btn" id="add-team-btn">+</button>
   </div>
 
-  <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
-    <p class="proverb-translit" id="proverb_translit"></p>
     <p class="proverb-en" id="proverb_en"></p>
-    <div class="points-container" id="points"></div>
-  </div>
-
-  <!-- Timer -->
-  <p class="timer" id="timer">30</p>
-  <p class="passes-left" id="passes-left">Passes Left: 3</p>
-
-  <!-- Start & Stop Buttons -->
-  <div class="start-stop-container">
-    <i class="start-stop-icon" id="start-btn">▶</i>
-    <i class="start-stop-icon" id="stop-btn" style="display: none;">■</i>
-  </div>
-
-  <!-- Success & Pass Buttons -->
-  <div class="buttons-container">
-    <button class="btn" id="good-guess-btn" disabled>Good Guess</button>
-    <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
-  </div>
-
-  <!-- Navigation -->
-  <div class="navigation-arrows">
-    <button class="arrow-btn" id="back-btn">←</button>
-    <button class="arrow-btn" id="next-btn">→</button>
   </div>
 
   <script>
-    // JavaScript adjustments will be made inline to fix issues.
+    let teamCounter = 2; // Initial number of teams
+
+    document.getElementById("add-team-btn").addEventListener("click", () => {
+      teamCounter++;
+
+      // Create a new team box
+      const newTeamBox = document.createElement("div");
+      newTeamBox.classList.add("score-box");
+      newTeamBox.innerHTML = `
+        <input type="text" value="Team ${teamCounter}" />
+        <p id="team${teamCounter}-score">Score: 0</p>
+      `;
+
+      // Append the new team box to the scores container
+      document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
+    });
   </script>
 </body>
 </html>
