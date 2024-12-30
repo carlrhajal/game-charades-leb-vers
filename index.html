@@ -24,10 +24,9 @@
     .scores-container {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
       margin: 20px 0;
-      flex-wrap: wrap;
-      align-items: center;
     }
 
     .score-box {
@@ -37,6 +36,15 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       text-align: center;
       cursor: pointer;
+    }
+
+    .score-box input {
+      border: none;
+      background: transparent;
+      font-family: 'LebaneseFont', Arial, sans-serif;
+      font-size: 1.2rem;
+      text-align: center;
+      font-weight: bold;
     }
 
     .add-team-btn {
@@ -87,6 +95,12 @@
       margin-bottom: 10px;
     }
 
+    .points-container img {
+      width: 30px;
+      height: 30px;
+      margin: 2px;
+    }
+
     .timer-container {
       margin: 10px 0;
       display: flex;
@@ -103,46 +117,6 @@
       color: #870000;
       border: 1px solid #ccc;
       border-radius: 5px;
-    }
-
-    .buttons-container {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      background-color: #870000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: #a30000;
-    }
-
-    .btn:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-    .btn-pass {
-      background-color: black;
-      color: #fff;
-    }
-
-    .btn-pass:hover {
-      background-color: #555;
-    }
-
-    .passes-left {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #870000;
     }
   </style>
 </head>
@@ -173,15 +147,6 @@
     <input type="number" id="timer-input" class="timer-input" value="30" />
     <span>seconds</span>
   </div>
-  <p class="passes-left" id="passes-left">Passes Left: 3</p>
-
-  <!-- Start, Stop, Success, and Pass Buttons -->
-  <div class="buttons-container">
-    <button class="btn" id="start-btn">Start</button>
-    <button class="btn" id="stop-btn" disabled>Stop</button>
-    <button class="btn" id="success-btn" disabled>Success</button>
-    <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
-  </div>
 
   <script>
     let proverbs = [];
@@ -191,7 +156,7 @@
     let teamCounter = 2;
 
     async function fetchData() {
-      const response = await fetch('data.json'); // Ensure data.json exists in the same directory
+      const response = await fetch('data.json');
       proverbs = await response.json();
       displayProverb();
     }
@@ -208,7 +173,6 @@
           const tarbouch = document.createElement('img');
           tarbouch.src = './tarbouch.png';
           tarbouch.alt = 'Tarbouch Icon';
-          tarbouch.className = 'tarbouch';
           pointsContainer.appendChild(tarbouch);
         }
       }
@@ -222,36 +186,7 @@
         <input type="text" value="Team ${teamCounter}" />
         <p id="team${teamCounter}-score">Score: 0</p>
       `;
-      document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
-    });
-
-    document.getElementById("start-btn").addEventListener("click", () => {
-      timeLeft = parseInt(document.getElementById("timer-input").value, 10);
-      if (isNaN(timeLeft) || timeLeft <= 0) {
-        alert("Enter a valid time!");
-        return;
-      }
-
-      document.getElementById("start-btn").disabled = true;
-      document.getElementById("stop-btn").disabled = false;
-
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timer-input").value = timeLeft;
-
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          alert("Time's up!");
-          document.getElementById("start-btn").disabled = false;
-          document.getElementById("stop-btn").disabled = true;
-        }
-      }, 1000);
-    });
-
-    document.getElementById("stop-btn").addEventListener("click", () => {
-      clearInterval(timer);
-      document.getElementById("start-btn").disabled = false;
-      document.getElementById("stop-btn").disabled = true;
+      document.getElementById("scores-container").appendChild(newTeamBox);
     });
 
     fetchData();
