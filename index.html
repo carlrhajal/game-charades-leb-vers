@@ -16,6 +16,26 @@
       height: 100vh;
     }
 
+    .scores-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 20px 0;
+    }
+
+    .score-box {
+      background-color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .score-box h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
     .card-container {
       position: relative;
       background-color: #fff;
@@ -95,15 +115,22 @@
     .arrow-btn:hover {
       color: #a30000;
     }
-
-    .score {
-      font-size: 1.2rem;
-      color: #555;
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
+  <!-- Team Scores -->
+  <div class="scores-container">
+    <div class="score-box" id="team1-score-box">
+      <h2>Team 1</h2>
+      <p id="team1-score">Score: 0</p>
+    </div>
+    <div class="score-box" id="team2-score-box">
+      <h2>Team 2</h2>
+      <p id="team2-score">Score: 0</p>
+    </div>
+  </div>
+
+  <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
     <p class="proverb-en" id="proverb_en"></p>
@@ -112,21 +139,23 @@
     </div>
   </div>
 
+  <!-- Action Buttons -->
   <div class="buttons-container">
     <button class="btn" id="success-btn">Success</button>
     <button class="btn" id="pass-btn">Pass</button>
   </div>
 
+  <!-- Navigation -->
   <div class="navigation-arrows">
     <button class="arrow-btn" id="back-btn">←</button>
     <button class="arrow-btn" id="next-btn">→</button>
   </div>
 
-  <p class="score" id="score">Score: 0</p>
-
   <script>
     let currentIndex = 0;
-    let score = 0;
+    let team1Score = 0;
+    let team2Score = 0;
+    let currentTeam = 1; // Start with Team 1
     let proverbs = [];
 
     async function fetchData() {
@@ -159,14 +188,28 @@
     }
 
     function updateScore(points) {
-      score += points;
-      document.getElementById('score').textContent = `Score: ${score}`;
+      if (currentTeam === 1) {
+        team1Score += points;
+        document.getElementById('team1-score').textContent = `Score: ${team1Score}`;
+      } else {
+        team2Score += points;
+        document.getElementById('team2-score').textContent = `Score: ${team2Score}`;
+      }
+    }
+
+    function switchTeam() {
+      currentTeam = currentTeam === 1 ? 2 : 1;
+      document.getElementById('team1-score-box').style.boxShadow =
+        currentTeam === 1 ? '0 0 10px #870000' : 'none';
+      document.getElementById('team2-score-box').style.boxShadow =
+        currentTeam === 2 ? '0 0 10px #870000' : 'none';
     }
 
     document.getElementById('success-btn').addEventListener('click', () => {
       if (currentIndex < proverbs.length) {
         updateScore(proverbs[currentIndex].points);
         currentIndex++;
+        switchTeam();
         displayProverb();
       }
     });
@@ -174,6 +217,7 @@
     document.getElementById('pass-btn').addEventListener('click', () => {
       if (currentIndex < proverbs.length) {
         currentIndex++;
+        switchTeam();
         displayProverb();
       }
     });
