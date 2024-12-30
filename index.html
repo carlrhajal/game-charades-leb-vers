@@ -242,32 +242,84 @@
       displayProverb();
     }
 
-    function displayProverb() {
-        // // Handle random selection of a new proverb
-        // if (random) {
-        //   // Check if all proverbs have been displayed
-        //   if (displayedProverbs.length === proverbs.length) {
-        //     alert("All proverbs have been displayed!");
-        //     document.getElementById('proverb_ar').textContent = "No more proverbs!";
-        //     document.getElementById('proverb_ph').textContent = "—";
-        //     document.getElementById('proverb_en').textContent = "";
-        //     document.getElementById('points').innerHTML = ""; // Clear points container
-        //     return;
-        //   }
+    function displayProverb(random = true) {
 
-        //   // Select a random proverb that hasn't been displayed yet
-        //   let randomIndex;
-        //   do {
-        //     randomIndex = Math.floor(Math.random() * proverbs.length);
-        //   } while (displayedProverbs.includes(randomIndex));
+        if (random) {
+          // Check if all proverbs have been displayed
+          if (displayedProverbs.length === proverbs.length) {
+            alert("All proverbs have been displayed!");
+            document.getElementById('proverb_ar').textContent = "No more proverbs!";
+            document.getElementById('proverb_ph').textContent = "—";
+            document.getElementById('proverb_en').textContent = "";
+            document.getElementById('points').innerHTML = ""; // Clear points container
+            return;
+          }
 
-        //   // Add the selected proverb to the history
-        //   displayedProverbs.push(randomIndex);
-        //   currentProverbIndex = displayedProverbs.length - 1;
+          // Select a random proverb that hasn't been displayed yet
+          let randomIndex;
+          do {
+            randomIndex = Math.floor(Math.random() * proverbs.length);
+          } while (displayedProverbs.includes(randomIndex));
+
+          // Add the selected proverb to the history
+          displayedProverbs.push(randomIndex);
+          currentProverbIndex = displayedProverbs.length - 1;
+        }
+
+        // Get the proverb index to display
+        const proverbIndex = displayedProverbs[currentProverbIndex];
+        if (proverbIndex === undefined) {
+          console.error("No proverb found to display.");
+          return;
+        }
+
+        // Get the proverb object
+        const proverb = proverbs[proverbIndex];
+        if (!proverb) {
+          console.error("Invalid proverb index:", proverbIndex);
+          return;
+        }
+
+        // Update the display
+        document.getElementById('proverb_ar').textContent = proverb.proverb_ar || "No content";
+        document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
+        document.getElementById('proverb_en').textContent = proverb.proverb_en || "—";
+
+        // Display points as tarbouches
+        const pointsContainer = document.getElementById('points');
+        pointsContainer.innerHTML = ''; // Clear previous tarbouches
+
+        for (let i = 0; i < (proverb.points || 0); i++) {
+          const tarbouch = document.createElement('img');
+          tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
+          tarbouch.alt = 'Tarbouch Icon';
+          tarbouch.className = 'tarbouch';
+          pointsContainer.appendChild(tarbouch);
+        }
+
+
+        // //RANDOM V1 
+        // // Check if all proverbs have been displayed
+        // if (displayedProverbs.length === proverbs.length) {
+        //   alert("All proverbs have been displayed!");
+        //   document.getElementById('proverb_ar').textContent = "No more proverbs!";
+        //   document.getElementById('proverb_ph').textContent = "—";
+        //   document.getElementById('proverb_en').textContent = "";
+        //   document.getElementById('points').innerHTML = ""; // Clear points container
+        //   return;
         // }
 
-        // // Get the proverb to display (based on currentProverbIndex)
-        // const proverb = proverbs[displayedProverbs[currentProverbIndex]];
+        // // Select a random proverb that hasn't been displayed yet
+        // let randomIndex;
+        // do {
+        //   randomIndex = Math.floor(Math.random() * proverbs.length);
+        // } while (displayedProverbs.includes(randomIndex));
+
+        // // Add the selected proverb index to the displayedProverbs list
+        // displayedProverbs.push(randomIndex);
+
+        // // Display the selected proverb
+        // const proverb = proverbs[randomIndex];
         // document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
         // document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
         // document.getElementById('proverb_en').textContent = proverb.proverb_en;
@@ -283,45 +335,6 @@
         //   tarbouch.className = 'tarbouch';
         //   pointsContainer.appendChild(tarbouch);
         // }
-
-
-        //RANDOM V1 
-        // Check if all proverbs have been displayed
-        if (displayedProverbs.length === proverbs.length) {
-          alert("All proverbs have been displayed!");
-          document.getElementById('proverb_ar').textContent = "No more proverbs!";
-          document.getElementById('proverb_ph').textContent = "—";
-          document.getElementById('proverb_en').textContent = "";
-          document.getElementById('points').innerHTML = ""; // Clear points container
-          return;
-        }
-
-        // Select a random proverb that hasn't been displayed yet
-        let randomIndex;
-        do {
-          randomIndex = Math.floor(Math.random() * proverbs.length);
-        } while (displayedProverbs.includes(randomIndex));
-
-        // Add the selected proverb index to the displayedProverbs list
-        displayedProverbs.push(randomIndex);
-
-        // Display the selected proverb
-        const proverb = proverbs[randomIndex];
-        document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
-        document.getElementById('proverb_ph').textContent = proverb.proverb_ph || "—";
-        document.getElementById('proverb_en').textContent = proverb.proverb_en;
-
-        // Display points as tarbouches
-        const pointsContainer = document.getElementById('points');
-        pointsContainer.innerHTML = ''; // Clear previous tarbouches
-
-        for (let i = 0; i < proverb.points; i++) {
-          const tarbouch = document.createElement('img');
-          tarbouch.src = './tarbouch.png'; // Ensure tarbouch.png is in the same folder as index.html
-          tarbouch.alt = 'Tarbouch Icon';
-          tarbouch.className = 'tarbouch';
-          pointsContainer.appendChild(tarbouch);
-        }
 
       //NOT RANDOM 
       // if (currentIndex >= 0 && currentIndex < proverbs.length) {
@@ -446,20 +459,41 @@
       }
     });
 
+    // document.getElementById('back-btn').addEventListener('click', () => {
+    //   if (currentProverbIndex > 0) {
+    //     currentProverbIndex--;
+    //     displayProverb(false); // Display without selecting a random proverb
+    //   } else {
+    //     alert("No previous proverbs!");
+    //   }
+    // });
+
+    // // Right arrow: Show the next proverb in the history (or select a new one if at the end)
+    // document.getElementById('next-btn').addEventListener('click', () => {
+    //   if (currentProverbIndex < displayedProverbs.length - 1) {
+    //     currentProverbIndex++;
+    //     displayProverb(false); // Display without selecting a random proverb
+    //   } else {
+    //     displayProverb(true); // Select a new random proverb
+    //   }
+    // });
+
+
+    // Left arrow: Show the previous proverb
     document.getElementById('back-btn').addEventListener('click', () => {
       if (currentProverbIndex > 0) {
         currentProverbIndex--;
-        displayProverb(false); // Display without selecting a random proverb
+        displayProverb(false); // Display without selecting a new random proverb
       } else {
         alert("No previous proverbs!");
       }
     });
 
-    // Right arrow: Show the next proverb in the history (or select a new one if at the end)
+    // Right arrow: Show the next proverb in history (or select a new one if at the end)
     document.getElementById('next-btn').addEventListener('click', () => {
       if (currentProverbIndex < displayedProverbs.length - 1) {
         currentProverbIndex++;
-        displayProverb(false); // Display without selecting a random proverb
+        displayProverb(false); // Display without selecting a new random proverb
       } else {
         displayProverb(true); // Select a new random proverb
       }
