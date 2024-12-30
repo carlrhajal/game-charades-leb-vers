@@ -447,41 +447,38 @@
       }
     });
 
+    // document.getElementById('back-btn').addEventListener('click', () => {
+    //   if (currentProverbIndex > 0) {
+    //     currentProverbIndex--;
+    //     displayProverb(false); // Display without selecting a random proverb
+    //   } else {
+    //     alert("No previous proverbs!");
+    //   }
+    // });
 
-
+    // // Right arrow: Show the next proverb in the history (or select a new one if at the end)
+    // document.getElementById('next-btn').addEventListener('click', () => {
+    //   if (currentProverbIndex < displayedProverbs.length - 1) {
+    //     currentProverbIndex++;
+    //     displayProverb(false); // Display without selecting a random proverb
+    //   } else {
+    //     displayProverb(true); // Select a new random proverb
+    //   }
+    // });
 
     document.getElementById('back-btn').addEventListener('click', () => {
-      if (currentProverbIndex > 0) {
-        currentProverbIndex--;
-        displayProverb(false); // Display without selecting a random proverb
-      } else {
-        alert("No previous proverbs!");
+      if (currentIndex > 0) {
+        currentIndex--;
+        displayProverb();
       }
     });
 
-    // Right arrow: Show the next proverb in the history (or select a new one if at the end)
     document.getElementById('next-btn').addEventListener('click', () => {
-      if (currentProverbIndex < displayedProverbs.length - 1) {
-        currentProverbIndex++;
-        displayProverb(false); // Display without selecting a random proverb
-      } else {
-        displayProverb(true); // Select a new random proverb
+      if (currentIndex < proverbs.length - 1) {
+        currentIndex++;
+        displayProverb();
       }
     });
-
-    // document.getElementById('back-btn').addEventListener('click', () => {
-    //   if (currentIndex > 0) {
-    //     currentIndex--;
-    //     displayProverb();
-    //   }
-    // });
-
-    // document.getElementById('next-btn').addEventListener('click', () => {
-    //   if (currentIndex < proverbs.length - 1) {
-    //     currentIndex++;
-    //     displayProverb();
-    //   }
-    // });
 
     fetchData();
   </script>
