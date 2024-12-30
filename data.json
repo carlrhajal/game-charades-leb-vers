@@ -84,6 +84,146 @@
       "proverb_ph": "Ma fe shi warana",
       "points": 1,
       "category": "proverb"
+  },
+  {
+      "proverb_en": "Kibbeh Sanieyh",
+      "proverb_ar": "كبة صينية",
+      "proverb_ph": "kibbeh sanieyh",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Tabbouleh",
+      "proverb_ar": "تبولة",
+      "proverb_ph": "tabbouleh",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Fattoush",
+      "proverb_ar": "فتوش",
+      "proverb_ph": "fattoush",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Sambousek",
+      "proverb_ar": "سمبوسك",
+      "proverb_ph": "sambousek",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Manakish",
+      "proverb_ar": "مناقيش",
+      "proverb_ph": "manakish",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Kafta",
+      "proverb_ar": "كفتة",
+      "proverb_ph": "kafta",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Shawarma",
+      "proverb_ar": "شاورما",
+      "proverb_ph": "shawarma",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Warak Enab",
+      "proverb_ar": "ورق عنب",
+      "proverb_ph": "warak enab",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Makloubeh",
+      "proverb_ar": "مقلوبة",
+      "proverb_ph": "makloubeh",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Mujaddara",
+      "proverb_ar": "مجدرة",
+      "proverb_ph": "mujaddara",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Knefeh",
+      "proverb_ar": "كنافة",
+      "proverb_ph": "knefeh",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Atayef",
+      "proverb_ar": "قطايف",
+      "proverb_ph": "atayef",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Baklawa",
+      "proverb_ar": "بقلاوة",
+      "proverb_ph": "baklawa",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Lahm Baajin",
+      "proverb_ar": "لحم بعجين",
+      "proverb_ph": "lahm baajin",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Foul Medammes",
+      "proverb_ar": "فول مدمس",
+      "proverb_ph": "foul medammes",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Hummus",
+      "proverb_ar": "حمص",
+      "proverb_ph": "hummus",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Baba Ghanouj",
+      "proverb_ar": "بابا غنوج",
+      "proverb_ph": "baba ghanouj",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Sfiha",
+      "proverb_ar": "صفيحة",
+      "proverb_ph": "sfiha",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Arayes",
+      "proverb_ar": "عرائس",
+      "proverb_ph": "arayes",
+      "category": "food",
+      "points": 1
+  },
+  {
+      "proverb_en": "Shanklish",
+      "proverb_ar": "شنكليش",
+      "proverb_ph": "shanklish",
+      "category": "food",
+      "points": 1
   }
 
 ]
