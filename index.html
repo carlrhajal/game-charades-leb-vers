@@ -222,97 +222,48 @@
   </div>
 
   <script>
-    let teamCounter = 2; // Initial number of teams
-    let currentTeam = null; // Selected team
-    let timer; // Holds the interval timer
-    let timeLeft; // Remaining time
-    const timerInput = document.getElementById("timer-input");
+    let teamCounter = 2;
+    let currentTeam = null;
+    let timer;
+    let timeLeft;
+    let proverbs = [];
 
-    // Add a new team
-    document.getElementById("add-team-btn").addEventListener("click", () => {
-      teamCounter++;
-
-      const newTeamBox = document.createElement("div");
-      newTeamBox.classList.add("score-box");
-      newTeamBox.innerHTML = `
-        <input type="text" value="Team ${teamCounter}" />
-        <p id="team${teamCounter}-score">Score: 0</p>
-      `;
-      document.getElementById("scores-container").insertBefore(newTeamBox, document.getElementById("add-team-btn"));
-
-      // Add event listener for selecting the new team
-      newTeamBox.addEventListener("click", () => {
-        selectTeam(newTeamBox, teamCounter);
-      });
-    });
-
-    // Select a team
-    function selectTeam(teamBox, teamNumber) {
-      document.querySelectorAll(".score-box").forEach(box => box.classList.remove("selected"));
-      teamBox.classList.add("selected");
-      currentTeam = teamNumber;
+    async function fetchData() {
+      try {
+        const response = await fetch('data.json');
+        proverbs = await response.json();
+        currentIndex = 0;
+        displayProverb();
+      } catch (error) {
+        console.error('Error fetching proverbs:', error);
+        document.getElementById('proverb_ar').textContent = "Error loading proverbs.";
+        document.getElementById('proverb_en').textContent = "";
+      }
     }
 
-    // Add event listeners for initial teams
-    document.getElementById("team1-score-box").addEventListener("click", () => selectTeam(document.getElementById("team1-score-box"), 1));
-    document.getElementById("team2-score-box").addEventListener("click", () => selectTeam(document.getElementById("team2-score-box"), 2));
-
-    // Start the timer
-    document.getElementById("start-btn").addEventListener("click", () => {
-      if (!currentTeam) {
-        alert("Please select a team before starting!");
+    function displayProverb() {
+      if (proverbs.length === 0) {
+        document.getElementById('proverb_ar').textContent = "No proverbs available.";
+        document.getElementById('proverb_en').textContent = "";
         return;
       }
 
-      timeLeft = parseInt(timerInput.value, 10);
-      if (isNaN(timeLeft) || timeLeft <= 0) {
-        alert("Please enter a valid time greater than 0.");
-        return;
+      const proverb = proverbs[currentIndex];
+      document.getElementById('proverb_ar').textContent = proverb.proverb_ar || "—";
+      document.getElementById('proverb_en').textContent = proverb.proverb_en || "—";
+
+      const pointsContainer = document.getElementById('points');
+      pointsContainer.innerHTML = "";
+      for (let i = 0; i < (proverb.points || 0); i++) {
+        const tarbouch = document.createElement('img');
+        tarbouch.src = './tarbouch.png';
+        tarbouch.alt = 'Tarbouch Icon';
+        tarbouch.className = 'tarbouch';
+        pointsContainer.appendChild(tarbouch);
       }
-
-      timerInput.disabled = true;
-      document.getElementById("start-btn").disabled = true;
-      document.getElementById("stop-btn").disabled = false;
-      document.getElementById("success-btn").disabled = false;
-      document.getElementById("pass-btn").disabled = false;
-
-      timer = setInterval(() => {
-        timeLeft--;
-        timerInput.value = timeLeft;
-
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          alert("Time's up!");
-          resetTimer();
-        }
-      }, 1000);
-    });
-
-    // Success button logic
-    document.getElementById("success-btn").addEventListener("click", () => {
-      if (!currentTeam) return;
-
-      const currentScore = document.getElementById(`team${currentTeam}-score`);
-      let score = parseInt(currentScore.textContent.split(": ")[1], 10);
-      score++;
-      currentScore.textContent = `Score: ${score}`;
-    });
-
-    // Stop the timer
-    document.getElementById("stop-btn").addEventListener("click", () => {
-      clearInterval(timer);
-      resetTimer();
-    });
-
-    // Reset the timer
-    function resetTimer() {
-      timerInput.disabled = false;
-      document.getElementById("start-btn").disabled = false;
-      document.getElementById("stop-btn").disabled = true;
-      document.getElementById("success-btn").disabled = true;
-      document.getElementById("pass-btn").disabled = true;
     }
+
+    fetchData();
   </script>
 </body>
 </html>
-
