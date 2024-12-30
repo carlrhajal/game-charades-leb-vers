@@ -124,7 +124,7 @@
   </div>
 
   <!-- Timer -->
-  <p class="timer" id="timer">Time: 60</p>
+  <p class="timer" id="timer">Time: 30</p>
 
   <!-- Action Buttons -->
   <div class="buttons-container">
@@ -134,12 +134,17 @@
   </div>
 
   <script>
+    // Global variables
     let currentIndex = 0;
     let team1Score = 0;
     let team2Score = 0;
     let currentTeam = null;
     let timer;
-    let timeLeft = 60;
+    let timeLeft;
+    
+    // Editable timer duration
+    const TIMER_DURATION = 30; // Change this value to adjust the timer duration
+
     let proverbs = [];
 
     async function fetchData() {
@@ -170,7 +175,7 @@
     }
 
     function startTimer() {
-      timeLeft = 60;
+      timeLeft = TIMER_DURATION; // Use the variable for duration
       document.getElementById('timer').textContent = `Time: ${timeLeft}`;
       timer = setInterval(() => {
         timeLeft--;
