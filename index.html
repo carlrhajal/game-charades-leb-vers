@@ -9,74 +9,80 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #870000;
-      color: #fff;
-      text-align: center;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background: #1e1e1e;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .card {
+
+    .card-container {
+      position: relative;
       background-color: #fff;
-      color: #000;
-      border-radius: 10px;
+      width: 400px;
+      height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      margin: 20px 0;
     }
-    .proverb-en {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
+
     .proverb-ar {
       font-size: 1.8rem;
       color: #870000;
-      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    .points {
-      font-size: 1.2rem;
-      color: #555;
+
+    .proverb-en {
+      font-size: 1.4rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 10px;
     }
+
+    .points-container {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .tarbouch {
+      width: 30px;
+      height: 30px;
+    }
+
     .next-btn {
-      background-color: #ffcc00;
-      color: #000;
-      font-size: 1rem;
-      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #870000;
+      color: #fff;
       border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
       border-radius: 10px;
       cursor: pointer;
-      margin-top: 20px;
     }
+
     .next-btn:hover {
-      background-color: #ff9900;
-    }
-    .fez-icon {
-      margin-top: 20px;
-      width: 50px;
-      height: auto;
+      background-color: #a30000;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>7zar Shou</h1>
-    <div class="card" id="content">
-      <p class="proverb-en" id="proverb_en">Loading...</p>
-      <p class="proverb-ar" id="proverb_ar"></p>
-      <p class="points" id="points"></p>
+  <div class="card-container" id="card">
+    <p class="proverb-ar" id="proverb_ar">Loading...</p>
+    <p class="proverb-en" id="proverb_en"></p>
+    <div class="points-container" id="points">
+      <!-- Tarbouches will appear here -->
     </div>
-    <button class="next-btn" id="next-btn">Next</button>
-    <img src="fez.png" alt="Fez Icon" class="fez-icon">
   </div>
+  <button class="next-btn" id="next-btn">Next</button>
+
   <script>
     let currentIndex = 0;
     let proverbs = [];
@@ -89,13 +95,24 @@
 
     function displayProverb() {
       if (currentIndex < proverbs.length) {
-        document.getElementById('proverb_en').textContent = proverbs[currentIndex].proverb_en;
-        document.getElementById('proverb_ar').textContent = proverbs[currentIndex].proverb_ar;
-        document.getElementById('points').textContent = `Points: ${proverbs[currentIndex].points}`;
+        const proverb = proverbs[currentIndex];
+        document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
+        document.getElementById('proverb_en').textContent = proverb.proverb_en;
+
+        // Display points as tarbouches
+        const pointsContainer = document.getElementById('points');
+        pointsContainer.innerHTML = ''; // Clear previous tarbouches
+        for (let i = 0; i < proverb.points; i++) {
+          const tarbouch = document.createElement('img');
+          tarbouch.src = 'tarbouch.png'; // Replace with the actual tarbouch image path
+          tarbouch.alt = 'Tarbouch';
+          tarbouch.className = 'tarbouch';
+          pointsContainer.appendChild(tarbouch);
+        }
       } else {
-        document.getElementById('proverb_en').textContent = "No more proverbs!";
-        document.getElementById('proverb_ar').textContent = "";
-        document.getElementById('points').textContent = "";
+        document.getElementById('proverb_ar').textContent = "No more proverbs!";
+        document.getElementById('proverb_en').textContent = "";
+        document.getElementById('points').innerHTML = "";
       }
     }
 
