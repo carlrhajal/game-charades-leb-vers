@@ -416,7 +416,7 @@
       }
     });
 
-
+    // Event listener for triggering "Success" button with Space key
     document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
       // Prevent the default action of the spacebar (scrolling the page)
@@ -426,6 +426,20 @@
       const successButton = document.getElementById('success-btn');
       if (!successButton.disabled) {
         successButton.click();
+      }
+    }
+  });
+
+    // Event listener for triggering "Pass" button with Enter key
+    document.addEventListener('keydown', (event) => {
+    if (event.code === 'Enter') {
+      // Prevent the default action of Enter key (form submission or other actions)
+      event.preventDefault();
+
+      // Trigger the Pass button if it's not disabled
+      const passButton = document.getElementById('pass-btn');
+      if (!passButton.disabled) {
+        passButton.click();
       }
     }
   });
