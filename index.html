@@ -66,19 +66,7 @@
       margin-bottom: 10px;
     }
 
-    .points-container {
-      position: absolute;
-      bottom: 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .tarbouch {
-      width: 30px;
-      height: 30px;
-    }
-
-    .buttons-container {
+    .buttons-container, .team-container {
       display: flex;
       gap: 10px;
       margin-top: 20px;
@@ -98,22 +86,15 @@
       background-color: #a30000;
     }
 
-    .navigation-arrows {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+    .btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
 
-    .arrow-btn {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
+    .timer {
+      font-size: 1.5rem;
       color: #870000;
-    }
-
-    .arrow-btn:hover {
-      color: #a30000;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -130,32 +111,35 @@
     </div>
   </div>
 
+  <!-- Team Selection -->
+  <div class="team-container">
+    <button class="btn" id="team1-btn">Team 1</button>
+    <button class="btn" id="team2-btn">Team 2</button>
+  </div>
+
   <!-- Game Card -->
   <div class="card-container" id="card">
     <p class="proverb-ar" id="proverb_ar">Loading...</p>
     <p class="proverb-en" id="proverb_en"></p>
-    <div class="points-container" id="points">
-      <!-- Tarbouches will appear here -->
-    </div>
   </div>
+
+  <!-- Timer -->
+  <p class="timer" id="timer">Time: 60</p>
 
   <!-- Action Buttons -->
   <div class="buttons-container">
-    <button class="btn" id="success-btn">Success</button>
-    <button class="btn" id="pass-btn">Pass</button>
-  </div>
-
-  <!-- Navigation -->
-  <div class="navigation-arrows">
-    <button class="arrow-btn" id="back-btn">←</button>
-    <button class="arrow-btn" id="next-btn">→</button>
+    <button class="btn" id="start-btn">Start</button>
+    <button class="btn" id="success-btn" disabled>Success</button>
+    <button class="btn" id="pass-btn" disabled>Pass</button>
   </div>
 
   <script>
     let currentIndex = 0;
     let team1Score = 0;
     let team2Score = 0;
-    let currentTeam = 1; // Start with Team 1
+    let currentTeam = null;
+    let timer;
+    let timeLeft = 60;
     let proverbs = [];
 
     async function fetchData() {
@@ -169,21 +153,9 @@
         const proverb = proverbs[currentIndex];
         document.getElementById('proverb_ar').textContent = proverb.proverb_ar;
         document.getElementById('proverb_en').textContent = proverb.proverb_en;
-
-        // Display points as tarbouches
-        const pointsContainer = document.getElementById('points');
-        pointsContainer.innerHTML = ''; // Clear previous tarbouches
-        for (let i = 0; i < proverb.points; i++) {
-          const tarbouch = document.createElement('img');
-          tarbouch.src = 'tarbouch.png'; // Replace with the actual tarbouch image path
-          tarbouch.alt = 'Tarbouch';
-          tarbouch.className = 'tarbouch';
-          pointsContainer.appendChild(tarbouch);
-        }
       } else {
         document.getElementById('proverb_ar').textContent = "No more proverbs!";
         document.getElementById('proverb_en').textContent = "";
-        document.getElementById('points').innerHTML = "";
       }
     }
 
@@ -191,46 +163,64 @@
       if (currentTeam === 1) {
         team1Score += points;
         document.getElementById('team1-score').textContent = `Score: ${team1Score}`;
-      } else {
+      } else if (currentTeam === 2) {
         team2Score += points;
         document.getElementById('team2-score').textContent = `Score: ${team2Score}`;
       }
     }
 
-    function switchTeam() {
-      currentTeam = currentTeam === 1 ? 2 : 1;
-      document.getElementById('team1-score-box').style.boxShadow =
-        currentTeam === 1 ? '0 0 10px #870000' : 'none';
-      document.getElementById('team2-score-box').style.boxShadow =
-        currentTeam === 2 ? '0 0 10px #870000' : 'none';
+    function startTimer() {
+      timeLeft = 60;
+      document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          playBuzzer();
+          endTurn();
+        }
+      }, 1000);
     }
+
+    function playBuzzer() {
+      const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
+      audio.play();
+    }
+
+    function endTurn() {
+      document.getElementById('success-btn').disabled = true;
+      document.getElementById('pass-btn').disabled = true;
+    }
+
+    document.getElementById('team1-btn').addEventListener('click', () => {
+      currentTeam = 1;
+    });
+
+    document.getElementById('team2-btn').addEventListener('click', () => {
+      currentTeam = 2;
+    });
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      if (currentTeam) {
+        document.getElementById('success-btn').disabled = false;
+        document.getElementById('pass-btn').disabled = false;
+        startTimer();
+      } else {
+        alert('Please select a team first!');
+      }
+    });
 
     document.getElementById('success-btn').addEventListener('click', () => {
       if (currentIndex < proverbs.length) {
         updateScore(proverbs[currentIndex].points);
         currentIndex++;
-        switchTeam();
         displayProverb();
       }
     });
 
     document.getElementById('pass-btn').addEventListener('click', () => {
       if (currentIndex < proverbs.length) {
-        currentIndex++;
-        switchTeam();
-        displayProverb();
-      }
-    });
-
-    document.getElementById('back-btn').addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        displayProverb();
-      }
-    });
-
-    document.getElementById('next-btn').addEventListener('click', () => {
-      if (currentIndex < proverbs.length - 1) {
         currentIndex++;
         displayProverb();
       }
