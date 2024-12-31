@@ -221,6 +221,76 @@
       z-index: 100;
     }
 
+    .info-container {
+      margin-top: 20px;
+    }
+
+    .info-btn {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .info-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .info-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .info-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      width: 80%;
+      max-width: 500px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-content h3 {
+      margin-top: 0;
+    }
+
+    .info-content ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .info-content li {
+      margin: 10px 0;
+    }
+
+    .close-btn {
+      background-color: #870000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .close-btn:hover {
+      background-color: #a30000;
+    }
+
+
 
   </style>
 </head>
@@ -276,6 +346,27 @@
     <button class="arrow-btn" id="back-btn">←</button>
     <button class="arrow-btn" id="next-btn">→</button>
   </div>
+
+  <!-- Info Button and Modal -->
+  <div class="info-container">
+    <button class="btn info-btn" id="info-btn">Info</button>
+    <div class="info-modal" id="info-modal" style="display: none;">
+      <div class="info-content">
+        <h3>How to Play</h3>
+        <ul>
+          <li>1. Choose a team name.</li>
+          <li>2. Set the timer duration.</li>
+          <li>3. Select the team that's playing before each turn.</li>
+          <li>4. Press play to start the timer.</li>
+          <li>5. Turn the volume up to hear the timer buzzer.</li>
+          <li>6. A derbake sound will play when 5 seconds are left.</li>
+          <li>7. Yalla, 2el3ab ya Wadi3!</li>
+        </ul>
+        <button class="btn close-btn" id="close-info-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     let TIMER_DURATION = 30; // Adjustable timer duration
@@ -515,6 +606,24 @@
       }
     }
   });
+
+  // Info Button Functionality
+    document.getElementById('info-btn').addEventListener('click', () => {
+      document.getElementById('info-modal').style.display = 'flex';
+    });
+
+    document.getElementById('close-info-btn').addEventListener('click', () => {
+      document.getElementById('info-modal').style.display = 'none';
+    });
+
+    // Close modal on outside click
+    window.addEventListener('click', (event) => {
+      const modal = document.getElementById('info-modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
 
     fetchData();
   </script>
