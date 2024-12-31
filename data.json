@@ -9,24 +9,28 @@
     "proverb_en": "He who digs a pit for others falls into it himself",
     "proverb_ar": "يلي بحفر حفرة لغيره بيوقع فيها",
     "proverb_ph": "yalli b7afr 7ofra l ghayro byou2a3 fiha",
+    "category": "proverb",
     "points": 2
   },
   {
     "proverb_en": "Patience is the key to relief",
     "proverb_ar": "الصبر مفتاح الفرج",
     "proverb_ph": "al sabr mefta7 al faraj",
+    "category": "proverb",
     "points": 1
   },
   {
     "proverb_en": "We became a salad",
     "proverb_ar": "رحنا سلطة",
     "proverb_ph": "Re7na slata",
+    "category": "proverb",
     "points": 2
   },
   {
     "proverb_en": "Every speech has its time",
     "proverb_ar": "كل حديث إلو حديث",
     "proverb_ph": "Kil hadis ilo hadees",
+    "category": "proverb",
     "points": 1
   },
   {
@@ -355,114 +359,133 @@
     "proverb_en": "2ofoukh bel laban byotla3lak bawalin",
     "proverb_ar": "أفوخ باللبن بيطلعلك باوالين",
     "proverb_ph": "2ofoukh bel laban byotla3lak bawalin",
+    "category": "proverb",
     "points": 2
   },
   {
     "proverb_en": "Kel deek 3a mazbelto siyah",
     "proverb_ar": "كل ديك على مزبلته صياح",
     "proverb_ph": "Kel deek 3a mazbelto siyah",
+    "category": "proverb",
     "points": 1
   },
   {
       "proverb_en": "Li bayto men 2zez ma byermi l nas bel hjara",
       "proverb_ar": "لي بيته من قزاز ما بيرمي الناس بالحجارة",
       "proverb_ph": "Li bayto men 2zez ma byermi l nas bel hjara",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "Iza kan l kalam men fiDa, fal sekout men zahab",
       "proverb_ar": "إذا كان الكلام من فضة فالسكوت من ذهب",
       "proverb_ph": "Iza kan l kalam men fiDa, fal sekout men zahab",
+      "category": "proverb",
       "points": 3
   },
   {
       "proverb_en": "El sadi2 waqt el deyi2",
       "proverb_ar": "الصديق وقت الضيق",
       "proverb_ph": "El sadi2 waqt el deyi2",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Kel memnou3 marghoub",
       "proverb_ar": "كل ممنوع مرغوب",
       "proverb_ph": "Kel memnou3 marghoub",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "L 7ajeh om el ekhtira3",
       "proverb_ar": "الحاجة أم الاختراع",
       "proverb_ph": "L 7ajeh om el ekhtira3",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "7abl el kezeb 2asir",
       "proverb_ar": "حبل الكذب قصير",
       "proverb_ph": "7abl el kezeb 2asir",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "Tanjra w le2it ghataha",
       "proverb_ar": "طنجرة و لقيت غطاها",
       "proverb_ph": "Tanjra w le2it ghataha",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "El erd bi 3ein emmo ghazel",
       "proverb_ar": "القرد بعين امه غزال",
       "proverb_ph": "El erd bi 3ein emmo ghazel",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "El tekrar bi 3allim l 7mar",
       "proverb_ar": "التكرار بيعلم الحمار",
       "proverb_ph": "El tekrar bi 3allim l 7mar",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "Baselto ma7rou2a",
       "proverb_ar": "بصلته محروقة",
       "proverb_ph": "Baselto ma7rou2a",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Ensa el bansa",
       "proverb_ar": "انسى البانسا",
       "proverb_ph": "Ensa el bansa",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "To2borny",
       "proverb_ar": "تقبرني",
       "proverb_ph": "To2borny",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Bayyid tanajer",
       "proverb_ar": "بيض طناجر",
       "proverb_ph": "Bayyid tanajer",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Ta2 7anak",
       "proverb_ar": "طق حنك",
       "proverb_ph": "Ta2 7anak",
+      "category": "proverb",
       "points": 2
   },
   {
       "proverb_en": "Akalak rasak",
       "proverb_ar": "اكلك راسك",
       "proverb_ph": "Akalak rasak",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Ya 7mar",
       "proverb_ar": "يا حمار",
       "proverb_ph": "Ya 7mar",
+      "category": "proverb",
       "points": 1
   },
   {
       "proverb_en": "Bchil",
       "proverb_ar": "بشيل",
       "proverb_ph": "Bchil",
+      "category": "proverb",
       "points": 3
   },
   {
@@ -553,156 +576,196 @@
   "proverb_ar":"الجار قبل الدار",
   "proverb_ph":"El jar abel l dar",
   "proverb_en":"The neighbor comes before the house.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar":"اللي بياكل لوحده بيموت لوحده",
   "proverb_ph":"Li byekoul la wahdo bi mout la wahdo",
   "proverb_en":"He who eats alone, dies alone.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar":"اللي ما عنده كبير يشتري كبير",
   "proverb_ph":"Li ma 3endo kbir yeshtare kbir",
   "proverb_en":"If you don't have an elder, buy one (seek their wisdom).",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar":"اللي بيطلع بإيده بيطلع بإجرو",
   "proverb_ph":"Li byotla3 bi 2ido byotla bi ejor",
   "proverb_en":"What is earned by the hand is spent by the foot.",
+  "category": "proverb",
   "points": 1
 },
 {
   "proverb_ar":"جوابه تحت باطه",
   "proverb_ph":"Jawebo tahet bato",
   "proverb_en":"The answer lies under his arm (he knows the truth but hides it).",
+  "category": "proverb",
   "points": 1
 },
 {
   "proverb_ar":"يلي تحت باطه مسلة بتنعرو",
   "proverb_ph":"Yalli ta7t bato masla btin3aro",
   "proverb_en":"If someone has a needle under their arm, it will prick them.",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_ar":"بيشيل الزير من البير",
   "proverb_ph":"Bi chil l zir men l bir",
   "meaning_en":"He can pull the jar from the well (a resourceful person).",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_en": "A thousand words of cowardice are better than one word 'may he rest in peace'.",
   "proverb_ar": "ألف كلمة جبان ولا كلمة الله يرحمو",
   "proverb_ph": "Alf kilmet jaban wala kilmet Allah yer7amo",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_en": "Whoever gives, God increases for them.",
   "proverb_ar": "اللي من إيدو، الله يزيدو",
-  "proverb_ph": "Elli min eedo, Allah yzeedo",
+  "proverb_ph": "Elli min 2ido, Allah yzido",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "A child is a child, even if he rules a country.",
   "proverb_ar": "الولد ولد، ولو حكم بلد",
   "proverb_ph": "El walad walad, walaw 7akam balad",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "Keeps the donkey distracted from its feed.",
   "proverb_ar": "بيلهي الحمار عن عليقه",
   "proverb_ph": "Beylhi el 7mar 3an 3ali2o",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_en": "From your mouth to heaven's door.",
   "proverb_ar": "من تمك لباب السما",
   "proverb_ph": "Min timak la beb l sama",
+  "category": "proverb",
   "points": 1
 },
 {
   "proverb_en": "The monkey in his mother’s eyes is a gazelle.",
   "proverb_ar": "القرد بعين إمو غزال.",
   "proverb_ph": "El 2erd b3ein emmo ghazel",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "Like a deaf man at a wedding procession.",
   "proverb_ar": "متل الأطرش بالزفة",
   "proverb_ph": "Metel l 2atrach bel zaffe",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_en": "Like Wednesday in the middle of the week.",
   "proverb_ar": "متل الأربعا بنص الجمعة",
   "proverb_ph": "Metel l 2orb3a bi nos l jem3a",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "All of us for the nation.",
   "proverb_ar": "كلنا للوطن",
   "proverb_ph": "Koulouna lal watan",
+  "category": "proverb",
   "points": 1
 },
 {
   "proverb_en": "Turn the knife on the wound.",
   "proverb_ar": "عاد عالجرح",
   "proverb_ph": "3ad 3al jeri7",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "Dying from hunger.",
   "proverb_ar": "ميت من الجوع",
   "proverb_ph": "Mayit men l jou3",
+  "category": "proverb",
   "points": 1
 },
 {
   "proverb_en": "There is no smoke without fire.",
   "proverb_ar": "ما في دخان بلا نار.",
   "proverb_ph": "Ma fi dukhkhan bala nar",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_en": "We’re confused, bald one, about where to kiss you.",
   "proverb_ar": "احترنا يا قرعة منين بدنا نبوسك.",
   "proverb_ph": "E7tarna ya 2ar3a menen badna nbosik",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_ar": "قعود أعوج واحكي جالس",
   "proverb_ph": "23od a3waj w e7ki jales",
   "proverb_en": "Sit crooked but speak straight.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar": "وجه ما بيضحك لرغيف السخن",
   "proverb_ph": "Wejo ma byed7ak l roghif l sekhn",
   "proverb_en": "A face that doesn’t smile even at warm bread.",
+  "category": "proverb",
   "points": 3
 },
 {
   "proverb_ar": "ما في دخان بلا نار",
   "proverb_ph": "Ma fī dukhān bilā nār",
   "proverb_en": "There's no smoke without fire.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar": "طنجرة ولقيت غطاها",
-  "proverb_ph": "Tanjara w laʾīt ghaṭāha",
+  "proverb_ph": "Tanjara w le2it ghataha",
   "proverb_en": "The pot found its lid.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar": "السكوت علامة الرضا",
-  "proverb_ph": "Is-sukūt ʿalāmit ir-riḍā",
+  "proverb_ph": "l skut 3alemit l rida",
   "proverb_en": "Silence is a sign of approval.",
+  "category": "proverb",
   "points": 2
 },
 {
   "proverb_ar": "اللي بيشوف حالو ما حدا بيشوفو",
-  "proverb_ph": "Illī byishūf ḥālu ma ḥada byishūfū",
+  "proverb_ph": "li bi chouf halo mahadan bi choufo",
   "proverb_en": "He who admires himself is unseen by others.",
+  "category": "proverb",
+  "points": 2
+},
+{
+  "proverb_ar": "هيجي ما بتقلي عجّة",
+  "proverb_ph": "Heje ma bte2le 3ejje",
+  "proverb_en": "An excuse does not make an omelette",
+  "category": "proverb",
+  "points": 2
+},
+{
+  "proverb_ar": "ياريت ما بنيتها عمرت بيت",
+  "proverb_ph": "Yaret mabhayeta 3amarit bet",
+  "proverb_en": "I wish I hadn’t built it, it could’ve built a house.",
+  "category": "proverb",
   "points": 2
 }
 
