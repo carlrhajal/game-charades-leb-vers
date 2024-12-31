@@ -444,7 +444,7 @@
   </div>
 
 <!-- Editable Timer Input -->
-<p>Time: <input type="number" id="timer" value="30" min="10" step="1" /> seconds</p>
+<p>Time: <input type="number" id="timer" value="120" min="10" step="1" /> seconds</p>
 
 
   <!-- Start & Stop Buttons -->
@@ -603,10 +603,20 @@
     function startTimer() {
       // Get the value from the editable timer input
       const timerInput = document.getElementById('timer');
-      TIMER_DURATION = parseInt(timerInput.value) || 30; // Use default of 30 if input is invalid
+      const newTimerValue = parseInt(timerInput.value);
+
+      // Check if the input is valid and set the TIMER_DURATION
+      if (isNaN(newTimerValue) || newTimerValue <= 0) {
+        alert("Please enter a valid number greater than 0 for the timer.");
+        return;
+      }
+
+      TIMER_DURATION = newTimerValue;
       timeLeft = TIMER_DURATION;
       passesLeft = MAX_PASSES;
       updatePassesLeft();
+
+      // Disable and enable appropriate buttons
       timerInput.value = timeLeft; // Update the field to show the current time
       document.getElementById('start-btn').disabled = true;
       document.getElementById('stop-btn').disabled = false;
@@ -636,6 +646,7 @@
         }
       }, 1000);
     }
+
 
 
 
