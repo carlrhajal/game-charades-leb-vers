@@ -296,8 +296,6 @@
       color: white; /* Ensure the icon matches the button's text color */
     }
 
-
-
   </style>
 </head>
 <body>
@@ -507,17 +505,55 @@
       endTurn();
     }
 
+    // function playBuzzer() {
+    //   const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
+    //   audio.play();
+    // }
+
     function playBuzzer() {
       const audio = new Audio('buzzer.mp3'); // Replace with the actual path to the buzzer sound file
       audio.play();
     }
+
+
+    // function endTurn() {
+    //   document.getElementById('start-btn').disabled = false;
+    //   document.getElementById('stop-btn').disabled = true;
+    //   document.getElementById('success-btn').disabled = true;
+    //   document.getElementById('pass-btn').disabled = true;
+    // }
 
     function endTurn() {
       document.getElementById('start-btn').disabled = false;
       document.getElementById('stop-btn').disabled = true;
       document.getElementById('success-btn').disabled = true;
       document.getElementById('pass-btn').disabled = true;
+
+      // Switch to the next team
+      switchToNextTeam();
     }
+
+    function switchToNextTeam() {
+      const team1Box = document.getElementById('team1-score-box');
+      const team2Box = document.getElementById('team2-score-box');
+
+      if (currentTeam === 1) {
+        currentTeam = 2;
+        team1Box.classList.remove('selected');
+        team2Box.classList.add('selected');
+      } else if (currentTeam === 2) {
+        currentTeam = 1;
+        team2Box.classList.remove('selected');
+        team1Box.classList.add('selected');
+      } else {
+        // If no team is currently selected, default to Team 1
+        currentTeam = 1;
+        team1Box.classList.add('selected');
+        team2Box.classList.remove('selected');
+      }
+    }
+
+
 
     function updatePassesLeft() {
       document.getElementById('passes-left').textContent = `Passes Left: ${passesLeft}`;
