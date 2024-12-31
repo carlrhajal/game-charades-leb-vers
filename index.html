@@ -291,6 +291,11 @@
       background-color: #a30000;
     }
 
+    #info-btn i {
+      font-size: 1.5rem; /* Adjust the size of the icon */
+      color: white; /* Ensure the icon matches the button's text color */
+    }
+
 
 
   </style>
@@ -350,7 +355,9 @@
 
   <!-- Info Button and Modal -->
   <div class="info-container">
-    <button class="btn info-btn" id="info-btn">Info</button>
+    <button class="btn" id="info-btn">
+      <i class="fas fa-info-circle"></i>
+    </button>    
     <div class="info-modal" id="info-modal" style="display: none;">
       <div class="info-content">
         <h3>How to Play</h3>
