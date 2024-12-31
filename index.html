@@ -22,6 +22,12 @@
       height: 100vh;
     }
 
+    input {
+      white-space: normal;
+      text-transform: none;
+    }
+
+
     .scores-container {
       display: flex;
       justify-content: center;
@@ -686,6 +692,22 @@
       const input = event.target.value;
       event.target.value = input.replace(/[^a-zA-Z0-9\s]/g, ''); // Allow letters, numbers, and spaces
     });
+
+    document.getElementById('team1-name').addEventListener('keydown', (event) => {
+      // Allow the spacebar (keyCode 32 or event.code === 'Space')
+      if (event.code === 'Space' || event.key === ' ') {
+        event.preventDefault();
+        event.target.value += ' '; // Add a space to the input
+      }
+    });
+
+    document.getElementById('team2-name').addEventListener('keydown', (event) => {
+      if (event.code === 'Space' || event.key === ' ') {
+        event.preventDefault();
+        event.target.value += ' '; // Add a space to the input
+      }
+    });
+
 
 
 
