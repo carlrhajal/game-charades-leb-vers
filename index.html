@@ -677,6 +677,17 @@
       }
     });
 
+    document.getElementById('team1-name').addEventListener('input', (event) => {
+      const input = event.target.value;
+      event.target.value = input.replace(/[^a-zA-Z0-9\s]/g, ''); // Allow letters, numbers, and spaces
+    });
+
+    document.getElementById('team2-name').addEventListener('input', (event) => {
+      const input = event.target.value;
+      event.target.value = input.replace(/[^a-zA-Z0-9\s]/g, ''); // Allow letters, numbers, and spaces
+    });
+
+
 
     fetchData();
   </script>
