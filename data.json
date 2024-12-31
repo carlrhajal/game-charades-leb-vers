@@ -50,7 +50,7 @@
   {
       "proverb_en": "Every talk has a counter talk",
       "proverb_ar": "كل حديث إلو حديث",
-      "proverb_ph": "Kil hadis ilo hadees",
+      "proverb_ph": "Kil hedis ilo hadees",
       "points": 2,
       "category": "proverb"
   },
@@ -496,42 +496,42 @@
     "category": "proverb"
 },
 {
-    "proverb_en": "El akil zine",
+    "proverb_en": "the brain is an ornement",
     "proverb_ar": "العقل زينة",
-    "proverb_ph": "Akil zine",
+    "proverb_ph": "El akel zine",
     "points": 1,
     "category": "proverb"
 },
 {
-    "proverb_en": "Di2 l may may",
+    "proverb_en": "Pound water is stays water",
     "proverb_ar": "دق المي مي",
     "proverb_ph": "Di2 l may may",
     "points": 1,
     "category": "proverb"
 },
 {
-    "proverb_en": "El dene doulab",
+    "proverb_en": "Life is a wheel",
     "proverb_ar": "الدني دولاب",
     "proverb_ph": "El dene doulab",
     "points": 2,
     "category": "proverb"
 },
 {
-    "proverb_en": "Sabro tawil",
+    "proverb_en": "His patience is long",
     "proverb_ar": "صبره طويل",
     "proverb_ph": "Sabro tawil",
     "points": 1,
     "category": "proverb"
 },
 {
-    "proverb_en": "Sabro asir",
+    "proverb_en": "His patience is shortr",
     "proverb_ar": "صبره قصير",
     "proverb_ph": "Sabro asir",
     "points": 1,
     "category": "proverb"
 },
 {
-    "proverb_en": "Bta3mol mni7, btil2a mni7",
+    "proverb_en": "Do good and you'll find good",
     "proverb_ar": "بتعمل منيح، بتلقى منيح",
     "proverb_ph": "Bta3mol mni7, btil2a mni7",
     "points": 2,
@@ -603,7 +603,7 @@
 {
   "proverb_ar":"جوابه تحت باطه",
   "proverb_ph":"Jawebo tahet bato",
-  "proverb_en":"The answer lies under his arm (he knows the truth but hides it).",
+  "proverb_en":"The answer lies under his arm.",
   "category": "proverb",
   "points": 1
 },
@@ -617,7 +617,7 @@
 {
   "proverb_ar":"بيشيل الزير من البير",
   "proverb_ph":"Bi chil l zir men l bir",
-  "meaning_en":"He can pull the jar from the well (a resourceful person).",
+  "meaning_en":"He can pull the jar from the well.",
   "category": "proverb",
   "points": 3
 },
