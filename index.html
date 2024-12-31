@@ -334,7 +334,7 @@
   </div>
 
   <!-- Timer -->
-  <p class="timer" id="timer">Time: 30</p>
+  <p class="timer" id="timer">Time: 60</p>
   <p class="passes-left" id="passes-left">Passes Left: 3</p>
 
   <!-- Start & Stop Buttons -->
@@ -383,7 +383,7 @@
 
 
   <script>
-    let TIMER_DURATION = 30; // Adjustable timer duration
+    let TIMER_DURATION = 60; // Adjustable timer duration
     
     const MAX_PASSES = 3; // Maximum passes per turn
 
@@ -472,7 +472,7 @@
 
     function startTimer() {
       const timerInput = document.getElementById('timer-duration');
-      TIMER_DURATION = parseInt(timerInput.value) || 30; // Update TIMER_DURATION based on input
+      TIMER_DURATION = parseInt(timerInput.value) || 60; // Update TIMER_DURATION based on input
       timeLeft = TIMER_DURATION;
       passesLeft = MAX_PASSES;
       updatePassesLeft();
@@ -658,6 +658,7 @@
       }
     }
   });
+  
 
   // Info Button Functionality
     document.getElementById('info-btn').addEventListener('click', () => {
