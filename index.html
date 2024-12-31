@@ -365,6 +365,29 @@
       }
     }
 
+    // function startTimer() {
+    //   const timerInput = document.getElementById('timer-duration');
+    //   TIMER_DURATION = parseInt(timerInput.value) || 30; // Update TIMER_DURATION based on input
+    //   timeLeft = TIMER_DURATION;
+    //   passesLeft = MAX_PASSES;
+    //   updatePassesLeft();
+    //   document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+    //   document.getElementById('start-btn').disabled = true;
+    //   document.getElementById('stop-btn').disabled = false;
+    //   document.getElementById('success-btn').disabled = false;
+    //   document.getElementById('pass-btn').disabled = false;
+
+    //   timer = setInterval(() => {
+    //     timeLeft--;
+    //     document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+    //     if (timeLeft <= 0) {
+    //       clearInterval(timer);
+    //       playBuzzer();
+    //       endTurn();
+    //     }
+    //   }, 1000);
+    // }
+
     function startTimer() {
       const timerInput = document.getElementById('timer-duration');
       TIMER_DURATION = parseInt(timerInput.value) || 30; // Update TIMER_DURATION based on input
@@ -377,16 +400,28 @@
       document.getElementById('success-btn').disabled = false;
       document.getElementById('pass-btn').disabled = false;
 
+      const derbakePlayed = { value: false }; // To ensure the derbake.mp3 plays only once
+
       timer = setInterval(() => {
         timeLeft--;
         document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+        
+        // Play derbake sound at 5 seconds remaining
+        if (timeLeft === 5 && !derbakePlayed.value) {
+          const derbakeAudio = new Audio('derbake.mp3'); // Replace with the actual path to derbake.mp3
+          derbakeAudio.play();
+          derbakePlayed.value = true; // Prevent multiple plays
+        }
+
+        // Timer ends
         if (timeLeft <= 0) {
           clearInterval(timer);
-          playBuzzer();
+          playBuzzer(); // Play the existing buzzer sound
           endTurn();
         }
       }, 1000);
     }
+
 
     function stopTimer() {
       clearInterval(timer);
