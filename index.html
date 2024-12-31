@@ -127,7 +127,7 @@
     }
 
     .btn-pass {
-      background-color: #FFCC00;
+      background-color: #1d1d1d;
       color: #333;
     }
 
@@ -195,6 +195,37 @@
       cursor: not-allowed;
     }
 
+    .btn[title] {
+      position: relative;
+    }
+
+    .btn[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      top: -30px; /* Adjust based on button size */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #870000;
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      border-radius: 5px;
+      white-space: nowrap;
+      z-index: 100;
+    }
+
+    .btn[title]:hover::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #870000;
+      z-index: 100;
+    }
+
+
   </style>
 </head>
 <body>
@@ -240,9 +271,9 @@
 
   <!-- Success & Pass Buttons -->
   <div class="buttons-container">
-    <button class="btn" id="success-btn" disabled>Good guess</button>
-    <button class="btn btn-pass" id="pass-btn" disabled>Pass</button>
-  </div>
+    <button class="btn" id="success-btn" disabled title="Press Space for Good Guess">Good guess</button>
+    <button class="btn btn-pass" id="pass-btn" disabled title="Press Enter for Pass">Pass</button>
+  </div>  
 
   <!-- Navigation -->
   <div class="navigation-arrows">
