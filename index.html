@@ -403,6 +403,20 @@
       color: #870000;
     }
 
+    #timer {
+      width: 60px;
+      padding: 5px;
+      font-size: 1.2rem;
+      text-align: center;
+      border: 2px solid #870000;
+      border-radius: 5px;
+      color: #870000;
+    }
+
+    #timer:focus {
+      outline: none;
+      border-color: #a30000;
+    }
 
 
 
@@ -429,29 +443,9 @@
     <div class="points-container" id="points"></div>
   </div>
 
-  <!-- Timer
-  <p class="timer" id="timer">Time: 30</p>
-  <p class="passes-left" id="passes-left">Passes Left: 3</p> -->
+<!-- Editable Timer Input -->
+<p>Time: <input type="number" id="timer" value="30" min="10" step="1" /> seconds</p>
 
-  <!-- Preset Timer Buttons -->
-  <div class="timer-and-buttons">
-    <p class="timer" id="timer">Time: 60</p>
-
-    <!-- Editable Timer Input -->
-    <div class="timer-input-container">
-      <label for="editable-timer" class="timer-label">Time: </label>
-      <input type="number" id="editable-timer" class="timer-input" value="30" min="10" step="1" />
-      <span>seconds</span>
-    </div>
-    <!-- <div class="timer-buttons-container">
-      <button class="timer-btn" data-time="30">30s</button>
-      <button class="timer-btn" data-time="60" class="active" id="default-timer">60s</button>
-      <button class="timer-btn" data-time="90">90s</button>
-      <button class="timer-btn" data-time="120">120s</button>
-      <button class="timer-btn" data-time="150">150s</button>
-    </div> -->
-    <p class="passes-left" id="passes-left">Passes Left: 3</p>
-  </div>
 
   <!-- Start & Stop Buttons -->
   <div class="start-stop-container">
@@ -608,12 +602,12 @@
 
     function startTimer() {
       // Get the value from the editable timer input
-      const timerInput = document.getElementById('editable-timer');
+      const timerInput = document.getElementById('timer');
       TIMER_DURATION = parseInt(timerInput.value) || 30; // Use default of 30 if input is invalid
       timeLeft = TIMER_DURATION;
       passesLeft = MAX_PASSES;
       updatePassesLeft();
-      document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+      timerInput.value = timeLeft; // Update the field to show the current time
       document.getElementById('start-btn').disabled = true;
       document.getElementById('stop-btn').disabled = false;
       document.getElementById('success-btn').disabled = false;
@@ -624,7 +618,7 @@
 
       timer = setInterval(() => {
         timeLeft--;
-        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+        timerInput.value = timeLeft; // Dynamically update the input field with the remaining time
 
         // Play derbake sound at 5 seconds remaining
         if (timeLeft === 5 && !derbakePlayed) {
@@ -642,6 +636,7 @@
         }
       }, 1000);
     }
+
 
 
 
