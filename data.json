@@ -420,7 +420,7 @@
   },
   {
       "proverb_en": "El erd bi 3ein emmo ghazel",
-      "proverb_ar": "القرد بعين امه غزال",
+      "proverb_ar": " امه غزال بعين القرد", 
       "proverb_ph": "El erd bi 3ein emmo ghazel",
       "category": "proverb",
       "points": 1
@@ -655,13 +655,6 @@
   "proverb_ph": "Min timak la beb l sama",
   "category": "proverb",
   "points": 1
-},
-{
-  "proverb_en": "The monkey in his mother’s eyes is a gazelle.",
-  "proverb_ar": "القرد بعين إمو غزال.",
-  "proverb_ph": "El 2erd b3ein emmo ghazel",
-  "category": "proverb",
-  "points": 2
 },
 {
   "proverb_en": "Like a deaf man at a wedding procession.",
