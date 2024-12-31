@@ -304,125 +304,15 @@
       color: white; /* Ensure the icon matches the button's text color */
     }
 
-    .timer-buttons-container {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .timer-btn {
-      background-color: #870000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s, transform 0.2s;
-    }
-
-    .timer-btn:hover {
-      background-color: #a30000;
-      transform: scale(1.05);
-    }
-
-    .timer-btn.active {
-      background-color: #ffcc00;
-      color: #870000;
-      font-weight: bold;
-    }
-
-    .timer-and-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-top: 10px;
-      gap: 10px;
-    }
-
-    .timer-buttons-container {
-      display: flex;
-      gap: 5px;
-      justify-content: center;
-    }
-
-    .timer-btn {
-      background-color: #870000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s, transform 0.2s;
-    }
-
-    .timer-btn:hover {
-      background-color: #a30000;
-      transform: scale(1.05);
-    }
-
-    .timer-btn.active {
-      background-color: #ffcc00;
-      color: #870000;
-      font-weight: bold;
-    }
-
-
-    .timer-input-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px 0; /* Add spacing */
-      font-size: 1.2rem;
-    }
-
-    .timer-label {
-      margin-right: 10px;
-      color: #870000;
-    }
-
-    .timer-input {
-      width: 80px;
-      padding: 5px;
-      font-size: 1rem;
-      text-align: center;
-      border: 2px solid #870000;
-      border-radius: 5px;
-    }
-
-    .timer-input:focus {
-      outline: none;
-      border-color: #a30000;
-    }
-
-    .timer-input-container span {
-      margin-left: 5px;
-      color: #870000;
-    }
-
-    #timer {
-      width: 60px;
-      padding: 5px;
-      font-size: 1.2rem;
-      text-align: center;
-      border: 2px solid #870000;
-      border-radius: 5px;
-      color: #870000;
-    }
-
-    #timer:focus {
-      outline: none;
-      border-color: #a30000;
-    }
-
-
-
   </style>
 </head>
 <body>
+  <!-- Timer Duration Input -->
+  <div class="timer-duration-container">
+    <label for="timer-duration">Set Timer Duration (seconds): </label>
+    <input type="number" id="timer-duration" value="30" min="10" />
+  </div>
+
   <!-- Team Scores -->
   <div class="scores-container">
     <div class="score-box" id="team1-score-box">
@@ -443,9 +333,9 @@
     <div class="points-container" id="points"></div>
   </div>
 
-<!-- Editable Timer Input -->
-<p>Time: <input type="number" id="timer" value="120" min="10" step="1" /> seconds</p>
-
+  <!-- Timer -->
+  <p class="timer" id="timer">Time: 30</p>
+  <p class="passes-left" id="passes-left">Passes Left: 3</p>
 
   <!-- Start & Stop Buttons -->
   <div class="start-stop-container">
@@ -484,7 +374,7 @@
           <li>4. Press play to start the timer</li>
           <li>5. Turn the volume up to hear the timer buzzer.</li>
           <li>6. A derbake sound will play when 5 seconds are left.</li>
-          <li>Yalla, 2el3ab ya Wadi3!</li>
+          <li>7. Yalla, 2el3ab ya Wadi3!</li>
         </ul>
         <button class="btn close-btn" id="close-info-btn">Close</button>
       </div>
@@ -493,27 +383,7 @@
 
 
   <script>
-    // let TIMER_DURATION = 30; // Adjustable timer duration
-
-    // Preset Timer Buttons Logic
-    const timerButtons = document.querySelectorAll(".timer-btn");
-    let TIMER_DURATION = 30; // Default timer duration (matches the active button)
-
-    timerButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        // Remove active class from all buttons
-        timerButtons.forEach((btn) => btn.classList.remove("active"));
-
-        // Add active class to the clicked button
-        button.classList.add("active");
-
-        // Update TIMER_DURATION based on the button's data-time attribute
-        TIMER_DURATION = parseInt(button.dataset.time);
-
-        console.log(`Timer set to ${TIMER_DURATION}s`);
-      });
-    });
-
+    let TIMER_DURATION = 30; // Adjustable timer duration
     
     const MAX_PASSES = 3; // Maximum passes per turn
 
@@ -601,57 +471,40 @@
     }
 
     function startTimer() {
-      // Get the timer input value
-      const timerInput = document.getElementById('timer');
-      const newTimerValue = parseInt(timerInput.value);
-
-      // Validate timer input
-      if (isNaN(newTimerValue) || newTimerValue <= 0) {
-        alert("Please enter a valid number greater than 0 for the timer.");
-        return;
-      }
-
-      // Set TIMER_DURATION and initialize timeLeft
-      TIMER_DURATION = newTimerValue;
+      const timerInput = document.getElementById('timer-duration');
+      TIMER_DURATION = parseInt(timerInput.value) || 30; // Update TIMER_DURATION based on input
       timeLeft = TIMER_DURATION;
-
-      // Update passes and disable the timer input during the game
       passesLeft = MAX_PASSES;
       updatePassesLeft();
-      timerInput.disabled = true;
-
-      // Enable and disable appropriate buttons
+      document.getElementById('timer').textContent = `Time: ${timeLeft}`;
       document.getElementById('start-btn').disabled = true;
       document.getElementById('stop-btn').disabled = false;
       document.getElementById('success-btn').disabled = false;
       document.getElementById('pass-btn').disabled = false;
 
-      const derbakeAudio = new Audio('derbake.mp3');
-      let derbakePlayed = false;
+      const derbakeAudio = new Audio('derbake.mp3'); // Reference to the derbake sound
+      let derbakePlayed = false; // Flag to ensure it plays only once
 
-      // Start the timer
       timer = setInterval(() => {
         timeLeft--;
-        timerInput.value = timeLeft; // Dynamically update the input field
-
+        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+        
+        // Play derbake sound at 5 seconds remaining
         if (timeLeft === 5 && !derbakePlayed) {
           derbakeAudio.play();
           derbakePlayed = true;
         }
 
+        // Timer ends
         if (timeLeft <= 0) {
           clearInterval(timer);
-          derbakeAudio.pause();
-          derbakeAudio.currentTime = 0;
-          playBuzzer();
+          derbakeAudio.pause(); // Stop the derbake sound
+          derbakeAudio.currentTime = 0; // Reset audio to the start
+          playBuzzer(); // Play the existing buzzer sound
           endTurn();
         }
       }, 1000);
     }
-
-
-
-
 
 
 
