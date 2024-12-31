@@ -41,13 +41,6 @@
       "category": "proverb"
   },
   {
-      "proverb_en": "We became a salad",
-      "proverb_ar": "رحنا سلطة",
-      "proverb_ph": "Re7na slata",
-      "points": 1,
-      "category": "proverb"
-  },
-  {
       "proverb_en": "Every talk has a counter talk",
       "proverb_ar": "كل حديث إلو حديث",
       "proverb_ph": "Kil hedis ilo hadees",
@@ -69,7 +62,7 @@
       "category": "proverb"
   },
   {
-      "proverb_en": "Don't come here",
+      "proverb_en": "I don't care",
       "proverb_ar": "لا تزي",
       "proverb_ph": "La tizi",
       "points": 1,
@@ -223,42 +216,42 @@
       "points": 1
   },
   {
-    "proverb_en": "Li Beirut",
+    "proverb_en": "For Beirut",
     "proverb_ar": "لبيروت",
     "proverb_ph": "Li Beirut",
     "points": 2,
     "category": "song"
   },
   {
-    "proverb_en": "Ana La Habibi",
+    "proverb_en": "I'm to my lover",
     "proverb_ar": "أنا لحبيبي",
     "proverb_ph": "Ana La Habibi",
     "points": 2,
     "category": "song"
   },
   {
-    "proverb_en": "Waynak Ya Jar",
+    "proverb_en": "where are you neighbor",
     "proverb_ar": "وينك يا جار",
     "proverb_ph": "Waynak Ya Jar",
     "points": 3,
     "category": "song"
   },
   {
-    "proverb_en": "Habibi Ya Nour El 3ayn",
+    "proverb_en": "Habibi the light of my eye",
     "proverb_ar": "حبيبي يا نور العين",
     "proverb_ph": "Habibi Ya Nour El 3ayn",
     "points": 2,
     "category": "song"
   },
   {
-    "proverb_en": "Talj Talj",
+    "proverb_en": "Snow snow",
     "proverb_ar": "تلج تلج",
     "proverb_ph": "Talj Talj",
     "points": 1,
     "category": "song"
   },
   {
-    "proverb_en": "Nassam 3alayna l hawa",
+    "proverb_en": "The breath blew upon us",
     "proverb_ar": "نسّم علينا الهوى",
     "proverb_ph": "Nassam 3alayna l hawa",
     "points": 2,
@@ -272,21 +265,21 @@
     "category": "song"
   },
   {
-    "proverb_en": "Daret El Ayam",
+    "proverb_en": "the days have turned",
     "proverb_ar": "دارت الأيام",
     "proverb_ph": "Daret El Ayam",
     "points": 3,
     "category": "song"
   },
   {
-    "proverb_en": "Ya Rait",
+    "proverb_en": "I wish",
     "proverb_ar": "يا ريت",
     "proverb_ph": "Ya Rait",
     "points": 1,
     "category": "song"
   },
   {
-    "proverb_en": "Layali Lubnan",
+    "proverb_en": "Lebanese nights",
     "proverb_ar": "ليالي لبنان",
     "proverb_ph": "Layali Lubnan",
     "points": 2,
@@ -300,21 +293,21 @@
     "category": "song"
   },
   {
-    "proverb_en": "Ghosn El Zaytoun",
+    "proverb_en": "Olive branche",
     "proverb_ar": "غصن الزيتون",
     "proverb_ph": "Ghosn El Zaytoun",
     "points": 3,
     "category": "song"
   },
   {
-    "proverb_en": "Rouh W Na7ke",
+    "proverb_en": "Go and we speak",
     "proverb_ar": "روح ونحكي",
     "proverb_ph": "Rouh W Na7ke",
     "points": 2,
     "category": "song"
   },
   {
-    "proverb_en": "Taal Ya Gharam",
+    "proverb_en": "love comes",
     "proverb_ar": "تعال يا غرام",
     "proverb_ph": "Taal Ya Gharam",
     "points": 2,
@@ -356,42 +349,42 @@
     "category": "song"
   },
   {
-    "proverb_en": "2ofoukh bel laban byotla3lak bawalin",
+    "proverb_en": "blow in the yogurt and you'll get bubbles",
     "proverb_ar": "أفوخ باللبن بيطلعلك باوالين",
     "proverb_ph": "2ofoukh bel laban byotla3lak bawalin",
     "category": "proverb",
     "points": 2
   },
   {
-    "proverb_en": "Kel deek 3a mazbelto siyah",
+    "proverb_en": "Every rooster is a singer on his dumbster",
     "proverb_ar": "كل ديك على مزبلته صياح",
     "proverb_ph": "Kel deek 3a mazbelto siyah",
     "category": "proverb",
     "points": 1
   },
   {
-      "proverb_en": "Li bayto men 2zez ma byermi l nas bel hjara",
+      "proverb_en": "he who's house from glass does not throw rocks",
       "proverb_ar": "لي بيته من قزاز ما بيرمي الناس بالحجارة",
       "proverb_ph": "Li bayto men 2zez ma byermi l nas bel hjara",
       "category": "proverb",
       "points": 2
   },
   {
-      "proverb_en": "Iza kan l kalam men fiDa, fal sekout men zahab",
+      "proverb_en": "if words are silver, then silience is gold ",
       "proverb_ar": "إذا كان الكلام من فضة فالسكوت من ذهب",
-      "proverb_ph": "Iza kan l kalam men fiDa, fal sekout men zahab",
+      "proverb_ph": "Iza kan l kalam men fodaa, fal sekout men zahab",
       "category": "proverb",
       "points": 3
   },
   {
-      "proverb_en": "El sadi2 waqt el deyi2",
+      "proverb_en": "the friend during dire times",
       "proverb_ar": "الصديق وقت الضيق",
       "proverb_ph": "El sadi2 waqt el deyi2",
       "category": "proverb",
       "points": 1
   },
   {
-      "proverb_en": "Kel memnou3 marghoub",
+      "proverb_en": "what is forbidden is desired",
       "proverb_ar": "كل ممنوع مرغوب",
       "proverb_ph": "Kel memnou3 marghoub",
       "category": "proverb",
@@ -552,7 +545,7 @@
     "category": "city"
 },
 {
-    "proverb_en": "Ya alla",
+    "proverb_en": "OMG",
     "proverb_ar": "يا الله",
     "proverb_ph": "Ya alla",
     "points": 1,
